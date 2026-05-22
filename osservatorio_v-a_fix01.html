@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
 <script>
   // Persistable defaults — host rewrites this JSON block on __edit_mode_set_keys
@@ -29,9 +29,9 @@
     --rule: rgba(245, 242, 236, 0.12);
     --accent: #E8935A;
     --accent-soft: rgba(232, 147, 90, 0.18);
-    --font-display: "Space Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --font-body: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    --font-display: "Google Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-body: "Google Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-mono: "Google Sans Mono", ui-monospace, Menlo, Consolas, monospace;
     --maxw: 1280px;
     --pad-x: clamp(20px, 5vw, 80px);
     --motion-scale: 1;
@@ -184,7 +184,7 @@
 
   .lede {
     font-family: var(--font-body);
-    font-weight: 300;
+    font-weight: 400;
     font-size: clamp(18px, 2vw, 24px);
     line-height: 1.45;
     color: var(--fg-dim);
@@ -236,94 +236,16 @@
       linear-gradient(180deg, #080808 0%, #0E0B08 100%);
     z-index: 0;
   }
-  /* Hero-specific: tuck placeholder brief into a small corner label, don't fight with .hero-top */
-  #hero .media-zone .media-brief {
-    top: auto;
-    bottom: 16px;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    max-width: calc(100% - 32px);
-  }
-  #hero .media-brief__tag { font-size: 9px; padding: 3px 7px; }
-  #hero .media-brief__note { display: none; }
-  @media (max-width: 720px) {
-    #hero .media-zone .media-brief { bottom: 8px; }
-    #hero .media-brief__tag { font-size: 8px; }
-  }
 
-  .hero-canvas { position: absolute; inset: 0; z-index: 1; opacity: 0.5; }
-  /* === Imagery placeholder zones (v2) === */
-  .media-zone {
+  .hero-video {
     position: absolute; inset: 0;
-    overflow: hidden;
-    z-index: 1;
-    background:
-      linear-gradient(180deg, rgba(6,6,6,0.25) 0%, rgba(6,6,6,0.75) 100%),
-      radial-gradient(ellipse at 30% 40%, rgba(232,147,90,0.35), transparent 55%),
-      radial-gradient(ellipse at 75% 30%, rgba(232,147,90,0.15), transparent 50%),
-      linear-gradient(135deg, #1e140c 0%, #0a0705 70%);
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.35;
   }
-  .media-zone::before {
-    content: "";
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' seed='4'/></filter><rect width='300' height='300' filter='url(%23n)' opacity='0.4'/></svg>");
-    mix-blend-mode: overlay;
-    opacity: 0.5;
-  }
-  .media-zone::after {
-    /* Diagonal stripes to signal "this is a placeholder" */
-    content: "";
-    position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(135deg, transparent 0 24px, rgba(232,147,90,0.04) 24px 25px);
-    pointer-events: none;
-  }
-  .media-zone--cool {
-    background:
-      linear-gradient(180deg, rgba(6,6,6,0.25) 0%, rgba(6,6,6,0.8) 100%),
-      radial-gradient(ellipse at 50% 50%, rgba(80,120,180,0.18), transparent 60%),
-      linear-gradient(135deg, #0c1218 0%, #050709 100%);
-  }
-  .media-zone--split { /* side by side cold / warm */
-    background: linear-gradient(90deg, #0c1218 0%, #0c1218 50%, #1a0f08 50%, #1a0f08 100%);
-  }
-  .media-zone--split::before {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1' numOctaves='2' seed='9'/></filter><rect width='300' height='300' filter='url(%23n)' opacity='0.35'/></svg>");
-    mix-blend-mode: overlay;
-  }
-  .media-brief {
-    position: absolute; top: 16px; left: 16px; right: 16px;
-    display: flex; justify-content: space-between; align-items: flex-start;
-    gap: 16px; flex-wrap: wrap;
-    z-index: 3; pointer-events: none;
-  }
-  .media-brief__tag {
-    font-family: var(--font-mono);
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    padding: 5px 9px;
-    border: 1px solid rgba(255,255,255,0.16);
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(6px);
-  }
-  .media-brief__tag strong { color: var(--accent); font-weight: 400; }
-  .media-brief__note {
-    font-family: var(--font-mono);
-    font-size: 10px; letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.45);
-    text-transform: uppercase;
-    max-width: 36ch;
-    line-height: 1.6;
-    text-align: right;
-  }
-  @media (max-width: 640px) {
-    .media-brief__note { display: none; }
-  }
+  .hero-canvas { position: relative; z-index: 1; }
+  /* media-zone and media-brief removed — real media assets in place */
 
   /* Section dividers — small eyebrow with section number/theme */
   .section-marker {
@@ -414,7 +336,7 @@
   .stat-num .pct {
     font-size: 0.4em;
     color: var(--accent);
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: -0.02em;
   }
   .stat-num.outlined {
@@ -487,7 +409,7 @@
   .reason__num {
     font-family: var(--font-display);
     font-size: clamp(56px, 8vw, 96px);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1;
     letter-spacing: -0.04em;
     color: var(--accent);
@@ -513,11 +435,11 @@
     font-family: var(--font-display);
     font-size: clamp(56px, 8vw, 96px);
     line-height: 1; color: var(--accent);
-    margin-bottom: 16px; font-weight: 300;
+    margin-bottom: 16px; font-weight: 400;
   }
   .quote-text {
     font-family: var(--font-display);
-    font-weight: 300;
+    font-weight: 400;
     font-size: clamp(24px, 3.4vw, 44px);
     line-height: 1.22;
     letter-spacing: -0.015em;
@@ -537,11 +459,14 @@
      SECTION 2 — GEOGRAPHY
      ========================================================= */
   #geography { min-height: auto; padding-bottom: clamp(80px, 10vw, 140px); position: relative; overflow: hidden; }
-  #geography .media-zone {
-    position: absolute; top: 0; left: 0; right: 0; height: 50vh;
-    opacity: 0.55;
-    -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 95%);
-    mask-image: linear-gradient(180deg, black 0%, transparent 95%);
+  #geography .geo-ambient-video {
+    position: absolute; inset: 0;
+    pointer-events: none;
+  }
+  #geography .geo-ambient-video video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
   }
   #geography .geo-head, #geography .geo-layout, #geography .quote-block { position: relative; z-index: 2; }
   .geo-head {
@@ -581,59 +506,47 @@
     z-index: 3;
   }
   .geo-pin__ring {
-    width: 18px; height: 18px; border: 2px solid var(--accent);
+    width: 18px; height: 18px; border: 2px solid #ffffff;
     border-radius: 50%; position: relative; flex: none;
     background: rgba(10,10,10,0.6);
   }
   .geo-pin__ring::before {
-    content: ""; position: absolute; inset: 4px; background: var(--accent); border-radius: 50%;
+    content: ""; position: absolute; inset: 4px; background: #ffffff; border-radius: 50%;
   }
   .geo-pin__ring::after {
-    content: ""; position: absolute; inset: -8px; border: 1px solid var(--accent);
+    content: ""; position: absolute; inset: -8px; border: 1px solid rgba(255,255,255,0.5);
     border-radius: 50%; opacity: 0.4;
     animation: pinPulse 2.2s ease-out infinite;
   }
   .geo-pin__card {
     display: flex; flex-direction: column; gap: 2px;
     padding: 8px 12px;
-    background: rgba(10,10,10,0.85);
-    border: 1px solid var(--rule);
+    background: rgba(10,10,10,0.88);
+    border: 1px solid rgba(255,255,255,0.15);
     backdrop-filter: blur(8px);
-    min-width: 88px;
+    min-width: 96px;
     text-align: center;
   }
   .geo-pin__country {
     font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     color: var(--fg);
     letter-spacing: 0.02em;
   }
   .geo-pin__pct {
     font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 26px;
+    font-weight: 700;
     color: var(--accent);
     letter-spacing: -0.02em;
     line-height: 1;
   }
   @media (max-width: 640px) {
-    .geo-pin__card { min-width: 64px; padding: 5px 8px; }
-    .geo-pin__country { font-size: 11px; }
-    .geo-pin__pct { font-size: 15px; }
+    .geo-pin__card { min-width: 72px; padding: 5px 8px; }
+    .geo-pin__country { font-size: 12px; }
+    .geo-pin__pct { font-size: 18px; }
     .geo-pin__ring { width: 14px; height: 14px; }
-  }
-    border-radius: 50%; position: relative; flex: none;
-  }
-  .geo-pin__ring::before {
-    content: ""; position: absolute; inset: 3px; background: var(--accent); border-radius: 50%;
-    display: none;
-  }
-  .geo-pin__ring::after {
-    content: ""; position: absolute; inset: -6px; border: 1px solid var(--accent);
-    border-radius: 50%; opacity: 0.4;
-    animation: pinPulse 2.2s ease-out infinite;
-    display: none;
   }
   @keyframes pinPulse {
     0% { transform: scale(0.6); opacity: 0.6; }
@@ -654,7 +567,7 @@
     line-height: 0.9; letter-spacing: -0.04em;
     font-weight: 400;
   }
-  .geo-big .pct { color: var(--accent); font-weight: 300; }
+  .geo-big .pct { color: var(--accent); font-weight: 400; }
   .geo-big-label {
     font-family: var(--font-display);
     font-size: clamp(18px, 2vw, 24px);
@@ -670,7 +583,7 @@
   .geo-who__num {
     font-family: var(--font-display);
     font-size: clamp(36px, 5vw, 64px);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1;
     letter-spacing: -0.03em;
     color: var(--accent);
@@ -723,7 +636,7 @@
     font-weight: 400;
     text-align: right;
   }
-  .bar__val .pct { color: var(--accent); font-weight: 300; }
+  .bar__val .pct { color: var(--accent); font-weight: 400; }
   .bar.is-hero .bar__label { color: var(--accent); }
   .bar.is-hero .bar__val { color: var(--accent); }
 
@@ -741,7 +654,7 @@
     font-size: clamp(56px, 8vw, 96px);
     line-height: 0.95;
     letter-spacing: -0.03em;
-    font-weight: 300;
+    font-weight: 400;
   }
   .apps-foot__num .pct { color: var(--accent); }
   .apps-foot__label {
@@ -772,7 +685,7 @@
   }
   .turn-img {
     position: absolute; inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1800&q=85');
+    background-image: url('media/A-04_the-turn-hero.jpg');
     background-size: cover;
     background-position: center 40%;
     transform: scale(1.1);
@@ -794,13 +707,6 @@
     mix-blend-mode: overlay;
     opacity: 0.5;
   }
-  .turn-placeholder-label {
-    position: absolute; top: 24px; left: var(--pad-x);
-    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.22em;
-    color: rgba(255,255,255,0.4); text-transform: uppercase;
-    z-index: 2;
-    padding: 4px 8px; border: 1px solid rgba(255,255,255,0.15);
-  }
   .turn-content {
     position: relative; z-index: 2;
     max-width: var(--maxw); margin: 0 auto; width: 100%;
@@ -821,7 +727,7 @@
   .turn-stat__num {
     font-family: var(--font-display);
     font-size: clamp(72px, 10vw, 128px);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 0.9;
     letter-spacing: -0.04em;
     color: var(--fg);
@@ -1065,7 +971,7 @@
   .concl-body {
     font-family: var(--font-body);
     font-size: clamp(18px, 2vw, 22px);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.5;
     color: var(--fg-dim);
     max-width: 56ch;
@@ -1152,6 +1058,31 @@
   }
   .tweak__toggle.on .tweak__switch { background: var(--accent); }
   .tweak__toggle.on .tweak__switch::after { transform: translateX(14px); }
+
+  /* =========================================================
+     HEADING WEIGHT — WeRoad Google Sans brand style
+     font-variation-settings: "GRAD" 90, "opsz" 18 + weight 700
+     Corrisponde all'uso di Google Sans su weroad.com/it
+     ========================================================= */
+  .display,
+  .display--lg,
+  .concl-title,
+  .stat-num,
+  .reason__num,
+  .geo-big,
+  .geo-who__num,
+  .turn-stat__num,
+  .apps-foot__num,
+  .reasons__title,
+  .sxsw-quote__text {
+    font-weight: 700;
+    font-variation-settings: "GRAD" 90, "opsz" 18;
+  }
+  /* Outlined variant: text-stroke funziona meglio con GRAD ridotto */
+  .stat-num.outlined {
+    font-weight: 500;
+    font-variation-settings: "GRAD" 40, "opsz" 18;
+  }
 </style>
 </head>
 <body>
@@ -1166,12 +1097,10 @@
      ============================================================ -->
 <section id="hero" data-label="Osservatorio 2026">
   <div class="hero-bg"></div>
-  <div class="media-zone" aria-hidden="true">
-    <div class="media-brief">
-      <span class="media-brief__tag"><strong>VIDEO · HERO</strong> · 15–20s loop · muted audio</strong></span>
-      <span class="media-brief__note">Solitary figure in a crowd · station / urban piazza at dusk · handheld · warm tungsten vs cool blue hour · shallow DoF · low sat</span>
-    </div>
-  </div>
+  <video class="hero-video" autoplay muted loop playsinline poster="media/A-01_poster-fallback.jpg" aria-hidden="true">
+    <source src="media/A-01_hero-loop.webm" type="video/webm">
+    <source src="media/A-01_hero-loop.mp4" type="video/mp4">
+  </video>
   <canvas class="hero-canvas" id="heroCanvas"></canvas>
   <div class="hero-vignette"></div>
 
@@ -1294,11 +1223,11 @@
      SECTION 2 — GEOGRAPHY
      ============================================================ -->
 <section id="geography" data-label="02 · La geografia">
-  <div class="media-zone media-zone--cool" aria-hidden="true">
-    <div class="media-brief">
-      <span class="media-brief__tag"><strong>VIDEO · AMBIENT</strong> · aerial · loop 20s</strong></span>
-      <span class="media-brief__note">European city lights from above at night · slow rotation or gentle dolly · 20% opacity overlay</span>
-    </div>
+  <div class="geo-ambient-video" aria-hidden="true">
+    <video autoplay muted loop playsinline poster="media/A-02_poster-fallback.jpg">
+      <source src="media/A-02_geography-ambient.webm" type="video/webm">
+      <source src="media/A-02_geography-ambient.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="geo-head">
     <div class="eyebrow r-up" style="--i:0">02 — La geografia</div>
@@ -1328,35 +1257,35 @@
       </svg>
 
       <!-- Pins positioned over the 5 highlighted countries (percent within the 1000x620 viewBox) -->
-      <div class="geo-pin" style="left: 30%; top: 72%;">
+      <div class="geo-pin" style="left: 26%; top: 78%;">
         <div class="geo-pin__ring"></div>
         <div class="geo-pin__card">
           <div class="geo-pin__country">Spagna</div>
           <div class="geo-pin__pct">66<span style="font-size: 0.6em; color: var(--fg-dim);">%</span></div>
         </div>
       </div>
-      <div class="geo-pin" style="left: 40%; top: 52%;">
+      <div class="geo-pin" style="left: 40%; top: 62%;">
         <div class="geo-pin__ring"></div>
         <div class="geo-pin__card">
           <div class="geo-pin__country">Francia</div>
           <div class="geo-pin__pct">64<span style="font-size: 0.6em; color: var(--fg-dim);">%</span></div>
         </div>
       </div>
-      <div class="geo-pin" style="left: 32%; top: 27%;">
+      <div class="geo-pin" style="left: 28%; top: 38%;">
         <div class="geo-pin__ring"></div>
         <div class="geo-pin__card">
           <div class="geo-pin__country">UK</div>
           <div class="geo-pin__pct">67<span style="font-size: 0.6em; color: var(--fg-dim);">%</span></div>
         </div>
       </div>
-      <div class="geo-pin" style="left: 50%; top: 38%;">
+      <div class="geo-pin" style="left: 48%; top: 50%;">
         <div class="geo-pin__ring"></div>
         <div class="geo-pin__card">
           <div class="geo-pin__country">Germania</div>
           <div class="geo-pin__pct">68<span style="font-size: 0.6em; color: var(--fg-dim);">%</span></div>
         </div>
       </div>
-      <div class="geo-pin" style="left: 50%; top: 66%;">
+      <div class="geo-pin" style="left: 50%; top: 75%;">
         <div class="geo-pin__ring"></div>
         <div class="geo-pin__card">
           <div class="geo-pin__country">Italia</div>
@@ -1398,11 +1327,10 @@
      SECTION 3 — APPS VS TRAVEL
      ============================================================ -->
 <section id="apps-travel" data-label="03 · Apps vs Travel" style="position: relative; overflow: hidden;">
-  <div class="media-zone media-zone--split" aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; height: 40vh; opacity: 0.45; -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 90%); mask-image: linear-gradient(180deg, black 0%, transparent 90%);">
-    <div class="media-brief">
-      <span class="media-brief__tag"><strong>STILL · SPLIT</strong> · diptych</strong></span>
-      <span class="media-brief__note">L: person alone at cafe w/ phone, cold blue light &nbsp;·&nbsp; R: group laughing around a table, warm golden hour</span>
-    </div>
+  <div class="apps-diptych" aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; height: 40vh; opacity: 0.45; -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 90%); mask-image: linear-gradient(180deg, black 0%, transparent 90%);">
+    <img src="media/A-03_apps-diptych-left.jpg" alt="" style="position:absolute;inset:0;width:50%;height:100%;object-fit:cover;">
+    <img src="media/A-03_apps-diptych-right.jpg" alt="" style="position:absolute;inset:0;left:50%;width:50%;height:100%;object-fit:cover;">
+  </div>
   </div>
   <div class="sec-inner" style="position: relative; z-index: 2;">
     <div class="eyebrow r-up" style="--i:0">03 — Il paradosso digitale</div>
@@ -1459,10 +1387,7 @@
 <section id="the-turn" data-label="04 · La svolta" data-animate>
   <div class="turn-hero">
     <div class="turn-img"></div>
-    <div class="media-brief" style="top: 20px;">
-      <span class="media-brief__tag"><strong>PHOTO · HERO SHOT</strong> · full-bleed · parallax</span>
-      <span class="media-brief__note">Small group (4–6) on a road · backs to camera · warm afternoon · wide landscape · Dolomites / Andalusia / Highlands register · authentic, not posed</span>
-    </div>
+
     <div class="turn-content">
       <div class="eyebrow r-up" style="--i:0">04 — La svolta</div>
       <h2 class="display display--lg r-up" style="--i:1">In viaggio <em>succede qualcosa</em>.</h2>
@@ -1587,11 +1512,11 @@
      SECTION 6 — SXSW
      ============================================================ -->
 <section id="sxsw" data-label="06 · SXSW" style="position: relative; overflow: hidden;">
-  <div class="media-zone" aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; height: 55vh; opacity: 0.5; -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 95%); mask-image: linear-gradient(180deg, black 0%, transparent 95%);">
-    <div class="media-brief">
-      <span class="media-brief__tag"><strong>VIDEO · AMBIENT</strong> · 10s loop</strong></span>
-      <span class="media-brief__note">Austin at night · neon signage · blurred crowd · handheld · grainy · reportage feel</span>
-    </div>
+  <div class="sxsw-video" aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; height: 55vh; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 95%); mask-image: linear-gradient(180deg, black 0%, transparent 95%);">
+    <video autoplay muted loop playsinline poster="media/A-06_poster-fallback.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.5;">
+      <source src="media/A-06_sxsw-ambient.webm" type="video/webm">
+      <source src="media/A-06_sxsw-ambient.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="sxsw-head" style="position: relative; z-index: 2;">
     <div class="sxsw-meta r-fade" style="--i:0">

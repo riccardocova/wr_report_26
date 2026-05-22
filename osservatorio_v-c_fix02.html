@@ -8,16 +8,155 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 /* ---------- Tweakable defaults (host can rewrite) ---------- */
+
+  /* =========================================================
+     HEADING WEIGHT — WeRoad Google Sans brand style
+     font-variation-settings: "GRAD" 90, "opsz" 18 + weight 700
+     ========================================================= */
+  .hero__headline,
+  .turn-headline,
+  .sxsw-headline,
+  .conc-headline,
+  .stat-num,
+  .turn-stat .n,
+  .c-turn-stat .n {
+    font-weight: 700;
+    font-variation-settings: "GRAD" 90, "opsz" 18;
+  }
+
+  /* ============================================================
+     DARK-EVERYWHERE + MONO TEXT OVERRIDE
+     Tutte le sezioni con sfondo chiaro → sfondo scuro (#1A1A1A).
+     Testi: on-dark (bianco) / on-dark-mute (grigio) / accent rosso.
+     ============================================================ */
+
+  /* Base body */
+  body { background: var(--ink); color: var(--on-dark); }
+
+  /* Flip generici section--light */
+  .section--light,
+  .section--light.paper-tex {
+    background: var(--ink) !important;
+    color: var(--on-dark) !important;
+    background-image: none !important;
+  }
+
+  /* ---- SECTION 1 — DATA ESCALATION ---- */
+  .s-data { background: var(--ink); color: var(--on-dark); }
+  .s-data .lede { color: var(--on-dark-mute); }
+  .stat-row { border-color: var(--rule-dark); }
+  .stat-row:last-child { border-color: var(--rule-dark); }
+  .stat-num .unit { color: var(--on-dark); }
+  .stat-body .stat-label { color: var(--on-dark); }
+  .stat-body .stat-context { color: var(--on-dark-mute); }
+  .stat-body .stat-context strong { color: var(--on-dark); }
+  .reasons { background: var(--rule-dark); border-color: var(--rule-dark); }
+  .reason { background: #222222; }
+  .reason__label { color: var(--on-dark-mute); }
+  .pullquote .q { color: var(--on-dark); }
+  .pullquote .attr { color: var(--on-dark-mute); }
+
+  /* ---- SECTION 2 — GEOGRAPHY ---- */
+  .s-geo { background: var(--ink); color: var(--on-dark); }
+  .geo-map {
+    background: #1e1e1e;
+    border-color: var(--rule-dark);
+  }
+  .geo-map .map-meta {
+    color: var(--on-dark-mute);
+    border-color: var(--rule-dark);
+  }
+  .geo-country__name { color: var(--on-dark); }
+  .geo-country__pct span { color: var(--on-dark-mute); }
+  .geo-country__bar { background: rgba(245,242,237,.12); }
+  .geo-insight { color: var(--on-dark-mute); }
+  .geo-side h3 { color: var(--on-dark); }
+  .geo-side .body { color: var(--on-dark-mute); }
+  .geo-side .body strong { color: var(--on-dark); }
+  .who-stats { background: var(--rule-dark); border-color: var(--rule-dark); }
+  .who-stats > div { background: #1e1e1e; }
+  .who-stats .who-lbl { color: var(--on-dark-mute); }
+  .who-stats .who-cite { color: var(--on-dark-mute); }
+
+  /* ---- SECTION 3 — APPS VS TRAVEL ---- */
+  .s-apps { background: var(--ink); color: var(--on-dark); }
+  .bar-row { border-color: var(--rule-dark); }
+  .bar-row:first-child { border-color: var(--rule-dark); }
+  .bar-track { background: rgba(245,242,237,.10); }
+  .bar-row.is-hero .bar-track { background: rgba(245,242,237,.07); }
+  .bar-label { color: var(--on-dark); }
+  .bar-delta { color: var(--on-dark-mute); }
+  .bar-num { color: var(--on-dark); }
+  .chart-source { color: var(--on-dark-mute); }
+  .support-stats { border-color: var(--rule-dark); }
+  .support-stats .support .l { color: var(--on-dark-mute); }
+
+  /* ---- SECTION 5 — STORIES ---- */
+  .s-stories { background: var(--ink); color: var(--on-dark); }
+  .story { border-color: var(--rule-dark); }
+  .story:last-child { border-color: var(--rule-dark); }
+  .story__photo { background: #2a1e1e; }
+  .story__photo .placeholder-caption { color: rgba(245,242,237,.55); }
+  .story__bio { color: var(--on-dark-mute); }
+  .story__quote { color: var(--on-dark); }
+  .story__name { color: var(--on-dark); }
+
+  /* ---- SECTION 6 — SXSW / FOCUS GROUP ---- */
+  /* Background dark → il video sfuma verso scuro anziché beige */
+  .s-sxsw { background: var(--ink); color: var(--on-dark); }
+  .sxsw-meta { color: var(--on-dark-mute); }
+  .sxsw-quote { border-color: var(--rule-dark); }
+  .sxsw-quote .q { color: var(--on-dark); }
+  .sxsw-quote .attr { color: var(--on-dark-mute); }
+  .s-sxsw .body { color: var(--on-dark-mute); }
+  .s-sxsw .sxsw-headline { color: var(--on-dark); }
+
+  /* ---- TESTI MONO — più grandi e leggibili ---- */
+  /* Etichette capitolo (es: "06 FOCUS GROUP") */
+  .chapter { font-size: 14px; }
+  .chapter .label { opacity: 0.85; }     /* era 0.6 */
+
+  /* Eyebrow generici */
+  .eyebrow { font-size: 14px; }
+
+  /* Hero meta (REPORT · EDIZIONE II · …) */
+  .hero__issue { font-size: 13px; }
+
+  /* SXSW meta e attributi partecipanti */
+  .sxsw-meta { font-size: 14px; }
+  .sxsw-quote .attr { font-size: 13px; letter-spacing: .10em; }
+
+  /* Pullquote attribution */
+  .pullquote .attr { font-size: 13px; }
+
+  /* Stories: numero storia */
+  .story__num { font-size: 13px; }
+
+  /* Bar chart: delta e source */
+  .bar-delta { font-size: 12px; }
+  .chart-source { font-size: 12px; }
+
+  /* Geo labels */
+  .geo-map .map-meta { font-size: 12px; }
+  .geo-insight { font-size: 12px; }
+  .who-stats .who-lbl { font-size: 13px; }
+  .who-stats .who-cite { font-size: 11px; opacity: 1; }
+
+  /* Turn section small labels */
+  .turn-stat .l small { font-size: 12px; }
+
+  /* H-section label (sezione header) */
+  .h-section { font-size: 13px; }
+
 </style>
 <script>
 window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "grain": true,
   "paper": true,
-  "headlineFont": "fraunces",
   "accent": "red",
   "showSectionNumbers": true,
   "sxswVariant": "default"
@@ -43,9 +182,9 @@ window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   --rule-dark: rgba(245,242,237,.18);
   --rule-light: rgba(26,26,26,.16);
 
-  --f-display: "Syne", "Inter", system-ui, sans-serif;
-  --f-body: "Source Serif 4", "Source Serif Pro", Georgia, serif;
-  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --f-display: "Google Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --f-body: "Google Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --f-mono: "Google Sans Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   --maxw: 1240px;
   --gutter: clamp(20px, 4vw, 48px);
@@ -56,8 +195,8 @@ html[data-accent="black"]  { --accent: #1A1A1A; --accent-ink: #F5F2ED; }
 html[data-accent="green"]  { --accent: #1F4D3A; --accent-ink: #F5F2ED; }
 
 /* Headline font variants */
-html[data-headline="fraunces"]   { --f-display: "Fraunces", Georgia, serif; }
-html[data-headline="instrument"] { --f-display: "Instrument Serif", Georgia, serif; }
+
+
 
 /* ============================================================
    RESET / BASE
@@ -236,7 +375,16 @@ html[data-paper="false"] .section--light.paper-tex {
   position: relative;
   overflow: hidden;
 }
+.hero__video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.28;
+  z-index: 0;
+}
 .hero__inner {
+  position: relative;
+  z-index: 1;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -746,6 +894,12 @@ html[data-paper="false"] .section--light.paper-tex {
   position: relative;
   overflow: hidden;
 }
+.section.s-turn,
+section.s-turn {
+  padding-block: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .turn-headline {
   font-family: var(--f-display);
   font-weight: 600;
@@ -776,8 +930,7 @@ html[data-paper="false"] .section--light.paper-tex {
   min-height: 400px;
   align-self: stretch;
   height: 100%;
-  background: linear-gradient(135deg, #2a2622 0%, #1a1816 100%);
-  background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=85');
+  background-image: url('media/B-01_turn-photo-group.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -960,6 +1113,7 @@ html[data-paper="false"] .section--light.paper-tex {
   position: relative;
   overflow: hidden;
 }
+/* s-sxsw::before removed in Version C — video background replaces still image */
 html[data-sxsw="alt"] .s-sxsw { background: var(--ink); color: var(--on-dark); }
 html[data-sxsw="alt"] .s-sxsw .sxsw-meta,
 html[data-sxsw="alt"] .s-sxsw .sxsw-quote .attr,
@@ -1043,17 +1197,17 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
 .conc-headline {
   font-family: var(--f-display);
   font-weight: 600;
-  font-size: clamp(64px, 11vw, 168px);
-  line-height: 0.95;
-  letter-spacing: -0.035em;
+  font-size: clamp(48px, 7.5vw, 112px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
   margin-bottom: clamp(36px, 5vw, 60px);
 }
 .conc-headline em { font-style: normal; color: var(--accent); }
+.conc-headline strong { font-weight: 700; color: var(--on-dark); font-style: italic; }
 .conc-body {
   font-family: var(--f-body);
   font-size: clamp(20px, 1.2vw + 10px, 28px);
   line-height: 1.45;
-  max-width: 28ch;
   color: var(--on-dark);
   margin-bottom: clamp(60px, 8vw, 100px);
   text-wrap: pretty;
@@ -1252,6 +1406,156 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
   .page-meta .right { gap: 10px; }
   .pullquote { padding-left: 16px; }
 }
+
+/* =========================================================
+   VERSION C ADDITIONS
+   ========================================================= */
+
+/* Turn: fullscreen hero */
+.c-turn-hero {
+  position: relative;
+  height: 100vh; height: 100svh;
+  min-height: 600px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  overflow: hidden;
+}
+.c-turn-img {
+  position: absolute; inset: 0;
+  background-image: url('media/A-04_the-turn-hero.jpg');
+  background-size: cover; background-position: center 40%;
+  height: 100%;
+  width: 100%;
+}
+.c-turn-img::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(26,26,26,0.05) 0%, rgba(26,26,26,0.82) 100%);
+}
+.c-turn-content {
+  position: relative; z-index: 2;
+  padding-bottom: clamp(48px, 8vw, 96px);
+  padding-top: clamp(80px, 12vw, 140px);
+}
+.c-turn-content .chapter { margin-bottom: clamp(28px, 3.5vw, 48px); }
+.c-turn-content .turn-headline em { color: var(--accent); }
+.c-turn-content .turn-lede { color: rgba(245,242,237,0.75); margin-top: 24px; max-width: 60ch; }
+
+/* Turn: stats grid below image */
+.c-turn-stats {
+  background: var(--paper);
+  padding: clamp(64px, 9vw, 112px) 0;
+  border-top: 3px solid var(--accent);
+}
+.c-turn-stats__grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: clamp(40px, 5vw, 72px) clamp(28px, 4vw, 56px);
+}
+@media (max-width: 720px) { .c-turn-stats__grid { grid-template-columns: 1fr; } }
+.c-turn-stat .n {
+  font-family: var(--f-display);
+  font-size: clamp(64px, 9vw, 112px);
+  font-weight: 700; line-height: 0.9; letter-spacing: -0.04em;
+  color: var(--accent);
+}
+.c-turn-stat .l {
+  font-family: var(--f-body);
+  font-size: clamp(15px, 1.3vw, 19px); line-height: 1.55;
+  color: var(--ink-2); max-width: 36ch; margin-top: 14px;
+}
+.c-turn-stat .l em { color: var(--ink); font-style: italic; }
+.c-turn-stat .l small {
+  display: block; font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent); margin-top: 8px;
+}
+
+/* SXSW: video background */
+.c-sxsw-video {
+  position: absolute; top: 0; left: 0; right: 0; height: 75%;
+  overflow: hidden; pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, black 30%, transparent 100%);
+  mask-image: linear-gradient(180deg, black 30%, transparent 100%);
+  z-index: 1;
+}
+
+/* Stories: horizontal slider */
+.c-stories-track {
+  display: flex; overflow-x: auto;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: clamp(32px,4vw,56px) 0 0;
+  scrollbar-width: none;
+}
+.c-stories-track::-webkit-scrollbar { display: none; }
+.c-story {
+  flex: 0 0 clamp(260px, 30vw, 400px);
+  scroll-snap-align: start;
+  padding: 0 clamp(12px,1.5vw,24px);
+}
+.c-story:first-child { padding-left: var(--gutter); }
+.c-story:last-child  { padding-right: var(--gutter); }
+@media (max-width: 720px) { .c-story { flex: 0 0 82vw; } }
+
+.c-story__photo {
+  height: 420px;
+  width: 100%;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+  overflow: hidden;
+  filter: grayscale(1) contrast(1.05);
+}
+.c-story__photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: var(--accent); mix-blend-mode: multiply; opacity: 0.5;
+}
+.c-story__flag {
+  position: absolute; bottom: 12px; left: 12px; z-index: 2;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--paper);
+  background: rgba(26,26,26,0.65); padding: 4px 8px;
+}
+.c-story__name {
+  font-family: var(--f-display); font-weight: 700;
+  font-size: clamp(17px, 1.5vw, 21px); letter-spacing: -0.02em;
+  color: var(--ink); margin-top: 18px; margin-bottom: 10px;
+}
+.c-story__bio  { font-family: var(--f-body); font-size: 14px; line-height: 1.6; color: var(--ink-2); margin-bottom: 10px; }
+.c-story__quote {
+  font-family: var(--f-body); font-size: 14px; font-style: italic;
+  line-height: 1.6; color: var(--ink);
+  border-left: 2px solid var(--accent); padding-left: 12px; margin: 0;
+}
+
+/* Stories controls */
+.c-stories-controls {
+  max-width: var(--maxw); margin: clamp(20px,2.5vw,32px) auto 0;
+  padding: 0 var(--gutter);
+  display: flex; align-items: center; gap: clamp(14px,2vw,24px);
+}
+.c-stories-controls__nav { display: flex; gap: 8px; flex-shrink: 0; }
+.c-stories-controls__nav button {
+  width: 48px; height: 48px; border: 1px solid var(--rule-light);
+  display: grid; place-items: center;
+  cursor: pointer; background: transparent; color: var(--ink);
+  transition: border-color .2s, color .2s;
+}
+.c-stories-controls__nav button:hover { border-color: var(--accent); color: var(--accent); }
+.c-stories-controls__nav button:disabled { opacity: .3; cursor: not-allowed; }
+.c-stories-controls__nav button:disabled:hover { border-color: var(--rule-light); color: var(--ink); }
+.c-stories-controls__progress { flex: 1; }
+.c-stories-progress__track { height: 1px; background: var(--rule-light); position: relative; }
+.c-stories-progress__fill {
+  position: absolute; top: -1px; left: 0; height: 3px;
+  background: var(--accent); width: 0%;
+  transition: width .25s ease;
+}
+.c-stories-controls__count {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .2em;
+  color: var(--ink); text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+}
+.c-stories-controls__sep { color: var(--ink-3); }
 </style>
 </head>
 <body class="grain">
@@ -1268,6 +1572,10 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
 
 <!-- ======================= HERO ======================= -->
 <header class="hero">
+  <video class="hero__video" autoplay muted loop playsinline poster="media/A-01_poster-fallback.jpg" aria-hidden="true">
+    <source src="media/A-01_hero-loop.webm" type="video/webm">
+    <source src="media/A-01_hero-loop.mp4" type="video/mp4">
+  </video>
   <div class="hero__art" aria-hidden="true">
     <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -1527,42 +1835,45 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
 
 <!-- ======================= 04  THE TURN ======================= -->
 <section class="section s-turn section--dark" id="cap-04">
-  <div class="wrap">
-    <div class="chapter" style="color:var(--on-dark-mute)">
-      <span class="num">04</span>
-      <span class="label">La svolta</span>
-      <span class="rule"></span>
+  <!-- Fullscreen image hero (layout A) with B typography -->
+  <div class="c-turn-hero">
+    <div class="c-turn-img"></div>
+    <div class="c-turn-content wrap">
+      <div class="chapter" style="color:var(--on-dark-mute)">
+        <span class="num">04</span>
+        <span class="label">La svolta</span>
+        <span class="rule"></span>
+      </div>
+      <h2 class="turn-headline reveal">In viaggio succede <em>qualcosa</em>.</h2>
+      <p class="turn-lede reveal">Non è solo l'eccezione del calendario. È una sospensione delle abitudini, un protocollo sociale diverso. Le persone, in viaggio, si comportano in modo diverso — e lo riconoscono.</p>
     </div>
+  </div>
 
-    <h2 class="turn-headline reveal">In viaggio succede <em>qualcosa</em>.</h2>
-    <p class="turn-lede reveal">
-      Non è solo l'eccezione del calendario. È una sospensione delle abitudini, un protocollo sociale diverso. Le persone, in viaggio, si comportano in modo diverso — e lo riconoscono.
-    </p>
-
-    <div class="turn-grid">
-      <figure class="turn-photo reveal" aria-hidden="true">
-      </figure>
-
-      <div class="turn-stats">
-        <div class="turn-stat reveal">
+  <!-- Stats grid below the image -->
+  <div class="c-turn-stats">
+    <div class="wrap">
+      <div class="c-turn-stats__grid">
+        <div class="c-turn-stat reveal">
           <div class="n"><span data-count="83">0</span>%</div>
           <div class="l">si sente più aperto verso gli altri quando viaggia.</div>
         </div>
-        <div class="turn-stat reveal">
+        <div class="c-turn-stat reveal">
           <div class="n"><span data-count="66">0</span>%</div>
           <div class="l">ha creato una connessione significativa con qualcuno conosciuto in viaggio.</div>
         </div>
-        <div class="turn-stat reveal">
+        <div class="c-turn-stat reveal">
           <div class="n"><span data-count="52">0</span>%</div>
           <div class="l">giudica le relazioni nate in viaggio <em>più autentiche</em> di quelle nella vita quotidiana.</div>
         </div>
-        <div class="turn-stat reveal">
+        <div class="c-turn-stat reveal">
           <div class="n"><span data-count="39">0</span>%</div>
           <div class="l">ha pensato di andare all'estero specificamente per incontrare nuove persone. <small>Sale al 55% fra la Gen Z.</small></div>
         </div>
       </div>
     </div>
+  </div>
 
+  <div class="wrap">
     <figure class="pullquote reveal" style="margin-top:clamp(72px,9vw,110px)">
       <p class="q">Sono partita da sola. Sono tornata con quattro amici veri. Non l'avrei mai immaginato prima.</p>
       <figcaption class="attr">Alicia, 31 — Barcellona</figcaption>
@@ -1578,88 +1889,68 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
       <span class="label">Storie</span>
       <span class="rule"></span>
     </div>
-
-    <h2 class="h-section reveal">Alcune storie dalla nostra community.</h2>
+    <h2 class="h-section reveal">Alcune storie dalla <em>nostra community</em>.</h2>
     <p class="lede reveal" style="max-width:720px; color:var(--ink-2)">
       Sei persone, sei contesti diversi, una stessa intuizione: <em>il problema non era loro. Era il contesto.</em>
     </p>
   </div>
 
-  <div class="wrap" style="margin-top:clamp(40px,5vw,72px)">
-
-    <article class="story reveal">
-      <div class="story__photo" style="background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80');">
-      </div>
-      <div class="story__text">
-        <div class="story__num">Storia 01 / 06</div>
-        <h3 class="story__name">Alicia Bailac <span class="flag" aria-label="Spagna">🇪🇸</span></h3>
-        <p class="story__bio">Aveva paura di provare cose nuove. Il viaggio di gruppo ha cambiato il contesto, e con esso la sua disponibilità verso gli altri.</p>
-        <p class="story__quote">Non pensavo di essere il tipo da viaggio di gruppo. Poi ho capito che non era questione di tipo — era questione di contesto.</p>
-      </div>
+  <div class="c-stories-track" id="cStoriesTrack">
+    <article class="c-story">
+      <div class="c-story__photo" style="background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80');"><div class="c-story__flag">🇪🇸</div></div>
+      <div class="c-story__name">Alicia Bailac</div>
+      <p class="c-story__bio">Aveva paura di provare cose nuove. Il viaggio di gruppo ha cambiato il contesto, e con esso la sua disponibilità verso gli altri.</p>
+      <p class="c-story__quote">"Non pensavo di essere il tipo da viaggio di gruppo. Poi ho capito che non era questione di tipo — era questione di contesto."</p>
     </article>
-
-    <article class="story reveal">
-      <div class="story__photo" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80');">
-      </div>
-      <div class="story__text">
-        <div class="story__num">Storia 02 / 06</div>
-        <h3 class="story__name">Manuel Ortega Sánchez <span class="flag" aria-label="Spagna">🇪🇸</span></h3>
-        <p class="story__bio">Ha conosciuto la sua compagna durante un viaggio WeRoad. Poi è diventato coordinatore.</p>
-        <p class="story__quote">Siamo partiti come sconosciuti. Dopo sette giorni non riuscivamo a immaginare di non conoscerci.</p>
-      </div>
+    <article class="c-story">
+      <div class="c-story__photo" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80');"><div class="c-story__flag">🇪🇸</div></div>
+      <div class="c-story__name">Manuel Ortega Sánchez</div>
+      <p class="c-story__bio">Ha conosciuto la sua compagna durante un viaggio WeRoad. Poi è diventato coordinatore.</p>
+      <p class="c-story__quote">"Siamo partiti come sconosciuti. Dopo sette giorni non riuscivamo a immaginare di non conoscerci."</p>
     </article>
-
-    <article class="story reveal">
-      <div class="story__photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80');">
-      </div>
-      <div class="story__text">
-        <div class="story__num">Storia 03 / 06</div>
-        <h3 class="story__name">Simon Serp <span class="flag" aria-label="Francia">🇫🇷</span></h3>
-        <p class="story__bio">Aveva un lavoro che gli succhiava tutta l'energia. Ha scoperto WeRoad e si è reinventato dentro la community.</p>
-        <p class="story__quote">Il lavoro mi dava i soldi. Il viaggio mi ha ridato il tempo. Sono la stessa cosa? No. Non lo sono.</p>
-      </div>
+    <article class="c-story">
+      <div class="c-story__photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80');"><div class="c-story__flag">🇫🇷</div></div>
+      <div class="c-story__name">Simon Serp</div>
+      <p class="c-story__bio">Aveva un lavoro che gli succhiava tutta l'energia. Ha scoperto WeRoad e si è reinventato dentro la community.</p>
+      <p class="c-story__quote">"Il lavoro mi dava i soldi. Il viaggio mi ha ridato il tempo. Sono la stessa cosa? No. Non lo sono."</p>
     </article>
-
-    <article class="story reveal">
-      <div class="story__photo" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80');">
-      </div>
-      <div class="story__text">
-        <div class="story__num">Storia 04 / 06</div>
-        <h3 class="story__name">Daniela Dattolico <span class="flag" aria-label="Italia">🇮🇹</span></h3>
-        <p class="story__bio">Ha scoperto WeRoad su consiglio della sua psicologa.</p>
-        <p class="story__quote">La mia terapeuta mi ha detto: vai. Non sapevo cosa aspettarmi. Sapevo solo che qualcosa doveva cambiare.</p>
-      </div>
+    <article class="c-story">
+      <div class="c-story__photo" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80');"><div class="c-story__flag">🇮🇹</div></div>
+      <div class="c-story__name">Daniela Dattolico</div>
+      <p class="c-story__bio">Ha scoperto WeRoad su consiglio della sua psicologa.</p>
+      <p class="c-story__quote">"La mia terapeuta mi ha detto: vai. Non sapevo cosa aspettarmi. Sapevo solo che qualcosa doveva cambiare."</p>
     </article>
-
-    <article class="story reveal">
-      <div class="story__photo" style="background-image: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&q=80');">
-      </div>
-      <div class="story__text">
-        <div class="story__num">Storia 05 / 06</div>
-        <h3 class="story__name">Eileen Wegner <span class="flag" aria-label="Germania">🇩🇪</span></h3>
-        <p class="story__bio">Mamma single, gestisce la community WeRoad di Berlino.</p>
-        <p class="story__quote">Non cerco persone con cui fare tutto. Cerco persone con cui essere me stessa. Li ho trovati qui.</p>
-      </div>
+    <article class="c-story">
+      <div class="c-story__photo" style="background-image: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&q=80');"><div class="c-story__flag">🇩🇪</div></div>
+      <div class="c-story__name">Eileen Wegner</div>
+      <p class="c-story__bio">Mamma single. Gestisce la community WeRoad di Berlino.</p>
+      <p class="c-story__quote">"Non cerco persone con cui fare tutto. Cerco persone con cui essere me stessa. Li ho trovati qui."</p>
     </article>
-
-    <article class="story reveal">
-      <div class="story__photo" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80');">
-      </div>
-      <div class="story__text">
-        <div class="story__num">Storia 06 / 06</div>
-        <h3 class="story__name">Anna H. <span class="flag" aria-label="UK">🇬🇧</span></h3>
-        <p class="story__bio">Introversa. L'idea del viaggio di gruppo non l'entusiasmava. Poi ha scoperto che serviva il contesto giusto.</p>
-        <p class="story__quote">Sono introversa. Non significa che non voglia connessione. Significa che ho bisogno che qualcuno crei lo spazio giusto.</p>
-      </div>
+    <article class="c-story">
+      <div class="c-story__photo" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80');"><div class="c-story__flag">🇬🇧</div></div>
+      <div class="c-story__name">Anna H.</div>
+      <p class="c-story__bio">Introversa. L'idea del viaggio di gruppo non l'entusiasmava. Poi ha scoperto che serviva il contesto giusto.</p>
+      <p class="c-story__quote">"Sono introversa. Non significa che non voglia connessione. Significa che ho bisogno che qualcuno crei lo spazio giusto."</p>
     </article>
+  </div>
 
-
+  <div class="c-stories-controls">
+    <div class="c-stories-controls__nav">
+      <button id="cStoryPrev" aria-label="Storia precedente"><svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M6 1L1 6L6 11M1 6H15" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></button>
+      <button id="cStoryNext" aria-label="Storia successiva"><svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M10 1L15 6L10 11M15 6H1" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></button>
+    </div>
   </div>
 </section>
 
 <!-- ======================= 06  SXSW ======================= -->
 <section class="section s-sxsw" id="cap-06">
-  <div class="wrap">
+  <div class="c-sxsw-video" aria-hidden="true">
+    <video autoplay muted loop playsinline poster="media/A-06_poster-fallback.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.45;">
+      <source src="media/A-06_sxsw-ambient.webm" type="video/webm">
+      <source src="media/A-06_sxsw-ambient.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="wrap" style="position:relative;z-index:2;padding-top:clamp(200px,30vw,340px);">
     <div class="chapter">
       <span class="num">06</span>
       <span class="label">Focus group</span>
@@ -1692,7 +1983,7 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
         <figcaption class="attr">Partecipante #5 · Austin, TX</figcaption>
       </figure>
     </div>
-  </div>
+  </div><!-- /wrap -->
 </section>
 
 <!-- ======================= 07  CONCLUSION ======================= -->
@@ -1706,12 +1997,9 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
 
     <div class="conc-eyebrow reveal">Il punto.</div>
     <h2 class="conc-headline reveal">
-      Chi crea contesti<br/>
-      d'incontro <em>IRL</em>,<br/>
-      oggi, risponde.
+      Chi crea occasioni di incontro <em>IRL</em> oggi sta rispondendo a un <strong>importante bisogno</strong> della nostra generazione.
     </h2>
-    <div class="conc-body reveal">
-      <p>Sta rispondendo a uno dei bisogni più grandi della nostra generazione.</p>
+    <div class="conc-body reveal" style="max-width:none;">
       <p>Questo è il secondo anno che lo chiediamo. Continueremo a farlo.</p>
     </div>
 
@@ -1751,12 +2039,7 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
 
   <div class="tw-row" style="flex-direction:column; align-items:flex-start; gap:8px">
     <label>Headline font</label>
-    <div class="tw-seg" data-key="headlineFont">
-      <button data-val="syne" aria-pressed="true">Syne</button>
-      <button data-val="fraunces">Fraunces</button>
-      <button data-val="instrument">Instrument</button>
-    </div>
-  </div>
+</div>
 
   <div class="tw-row tw-color-row" style="flex-direction:column; align-items:flex-start; gap:8px">
     <label>Accent</label>
@@ -1788,7 +2071,6 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
     root.dataset.grain = state.grain ? "true" : "false";
     root.dataset.paper = state.paper ? "true" : "false";
     root.dataset.sectionNumbers = state.showSectionNumbers ? "true" : "false";
-    root.dataset.headline = state.headlineFont;
     root.dataset.accent = state.accent;
     root.dataset.sxsw = state.sxswVariant;
   }
@@ -2221,6 +2503,76 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
     mapIo.observe(mapEl);
   }
 })();
+
+/* ---- Version C: horizontal stories slider ---- */
+(function() {
+  const track = document.getElementById('cStoriesTrack');
+  const prevBtn = document.getElementById('cStoryPrev');
+  const nextBtn = document.getElementById('cStoryNext');
+  const idxEl  = document.getElementById('cStoryIdx');
+  const fill   = document.getElementById('cStoryProgress');
+  if (!track || !prevBtn) return;
+  const items = track.querySelectorAll('.c-story');
+  const total = items.length;
+  let current = 0;
+
+  function isAtEnd() {
+    return track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  }
+  function isAtStart() {
+    return track.scrollLeft <= 4;
+  }
+
+  function ui() {
+    idxEl.textContent = String(current + 1).padStart(2, '0');
+    const pct = ((current + 1) / total) * 100;
+    fill.style.width = pct.toFixed(1) + '%';
+    prevBtn.disabled = isAtStart();
+    nextBtn.disabled = isAtEnd();
+  }
+
+  function go(idx) {
+    current = Math.max(0, Math.min(total - 1, idx));
+    items[current].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    // Update buttons after scroll settles
+    setTimeout(ui, 350);
+  }
+
+  prevBtn.addEventListener('click', () => { if (!isAtStart()) go(current - 1); });
+  nextBtn.addEventListener('click', () => { if (!isAtEnd()) go(current + 1); });
+
+  let t;
+  track.addEventListener('scroll', () => {
+    clearTimeout(t);
+    t = setTimeout(() => {
+      const itemW = items[0].getBoundingClientRect().width;
+      if (itemW > 0) {
+        current = Math.round(track.scrollLeft / itemW);
+        current = Math.max(0, Math.min(total - 1, current));
+        ui();
+      }
+    }, 80);
+  });
+
+  ui();
+})();
+
+/* ---- Version C: count-up for turn stats ---- */
+document.querySelectorAll('.c-turn-stat [data-count]').forEach(el => {
+  const io = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    io.unobserve(el);
+    const target = parseInt(el.getAttribute('data-count'));
+    let start = null; const dur = 1200;
+    (function step(ts) {
+      if (!start) start = ts;
+      const p = Math.min((ts-start)/dur, 1);
+      el.textContent = Math.round(p*target);
+      if (p<1) requestAnimationFrame(step); else el.textContent=target;
+    })(performance.now());
+  }, {threshold:0.3});
+  io.observe(el);
+});
 </script>
 </body>
 </html>
