@@ -1128,19 +1128,26 @@
 
     .c-turn-img {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 115%;
+      width: 100%;
       background-image: url('media/A-04_the-turn-hero.jpg');
       background-size: cover;
       background-position: center 40%;
-      height: 100%;
-      width: 100%
+      will-change: transform
     }
 
     .c-turn-img::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(26, 26, 26, .05) 0%, rgba(26, 26, 26, .82) 100%)
+      background: linear-gradient(180deg,
+        rgba(26,26,26,.08) 0%,
+        rgba(26,26,26,.45) 50%,
+        rgba(26,26,26,.88) 80%,
+        rgba(26,26,26,1) 100%)
     }
 
     .c-turn-content {
@@ -1165,6 +1172,16 @@
       color: var(--accent)
     }
 
+    .turn-headline.reveal {
+      transform: scale(.94) translateY(24px);
+      transition: opacity 1.6s cubic-bezier(.16,1,.3,1), transform 1.6s cubic-bezier(.16,1,.3,1);
+      transition-delay: 200ms
+    }
+
+    .turn-headline.reveal.in {
+      transform: none
+    }
+
     .turn-lede {
       margin-top: 28px;
       max-width: 620px;
@@ -1175,8 +1192,7 @@
 
     .c-turn-stats {
       background: var(--paper);
-      padding: clamp(64px, 9vw, 112px) 0;
-      border-top: 3px solid var(--accent)
+      padding: clamp(64px, 9vw, 112px) 0
     }
 
     .c-turn-stats__grid {
@@ -2824,6 +2840,29 @@
           el.style.transform = 'none';
         });
       }));
+    })();
+
+    /* ============================================================
+       TURN HERO PARALLAX
+       ============================================================ */
+    (function () {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+      const img = document.querySelector('.c-turn-img');
+      const hero = document.querySelector('.c-turn-hero');
+      if (!img || !hero) return;
+
+      function update() {
+        const rect = hero.getBoundingClientRect();
+        const vh = window.innerHeight;
+        if (rect.bottom < 0 || rect.top > vh) return;
+        const progress = 1 - (rect.bottom / (vh + rect.height));
+        const clamped = Math.max(0, Math.min(1, progress));
+        img.style.transform = 'translateY(' + (clamped * -9) + '%)';
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     })();
 
     /* ============================================================

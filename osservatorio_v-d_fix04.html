@@ -1123,24 +1123,34 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      overflow: hidden
+      z-index: 1
     }
 
     .c-turn-img {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: calc(100vh + 220px);
+      height: calc(100svh + 220px);
+      min-height: 820px;
+      width: 100%;
       background-image: url('media/A-04_the-turn-hero.jpg');
       background-size: cover;
       background-position: center 40%;
-      height: 100%;
-      width: 100%
+      will-change: transform;
+      z-index: 0
     }
 
     .c-turn-img::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(26, 26, 26, .05) 0%, rgba(26, 26, 26, .82) 100%)
+      background: linear-gradient(180deg,
+        rgba(26,26,26,.08) 0%,
+        rgba(26,26,26,.36) 42%,
+        rgba(26,26,26,.72) 68%,
+        rgba(26,26,26,1) 84%)
     }
 
     .c-turn-content {
@@ -1165,6 +1175,37 @@
       color: var(--accent)
     }
 
+    .turn-line-1,
+    .turn-line-2 { display: block }
+
+    .turn-line-1 {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.9s cubic-bezier(.16,1,.3,1) 200ms,
+                  transform 0.9s cubic-bezier(.16,1,.3,1) 200ms
+    }
+
+    .turn-line-2 {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 1.2s cubic-bezier(.16,1,.3,1) 700ms,
+                  transform 1.2s cubic-bezier(.16,1,.3,1) 700ms
+    }
+
+    /* Parent .reveal: annulla opacity/transform del sistema generico,
+       le righe interne gestiscono tutto autonomamente */
+    .turn-headline.reveal {
+      opacity: 1;
+      transform: none;
+      transition: none
+    }
+
+    .turn-headline.reveal.in .turn-line-1,
+    .turn-headline.reveal.in .turn-line-2 {
+      opacity: 1;
+      transform: none
+    }
+
     .turn-lede {
       margin-top: 28px;
       max-width: 620px;
@@ -1174,9 +1215,10 @@
     }
 
     .c-turn-stats {
-      background: var(--paper);
-      padding: clamp(64px, 9vw, 112px) 0;
-      border-top: 3px solid var(--accent)
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(26,26,26,0) 0px, rgba(26,26,26,1) 220px);
+      padding: clamp(64px, 9vw, 112px) 0
     }
 
     .c-turn-stats__grid {
@@ -2191,15 +2233,18 @@
 
   <!-- ======================= 04 RELAZIONI IN VIAGGIO ======================= -->
   <section class="section s-turn section--dark" id="cap-04">
+    <div class="c-turn-img"></div>
     <div class="c-turn-hero">
-      <div class="c-turn-img"></div>
       <div class="c-turn-content wrap">
         <div class="chapter" style="color:var(--on-dark-mute)">
           <span class="num">04</span>
           <span class="label">Relazioni in viaggio</span>
           <span class="rule"></span>
         </div>
-        <h2 class="turn-headline reveal">In viaggio succede <em>qualcosa</em>...</h2>
+        <h2 class="turn-headline reveal">
+          <span class="turn-line-1"><em>In viaggio</em></span>
+          <span class="turn-line-2">succede qualcosa...</span>
+        </h2>
         <!-- <p class="turn-lede reveal">Non è solo una pausa dal calendario. È una sospensione delle abitudini, un protocollo sociale diverso. Le persone, in viaggio, si comportano in modo diverso — e lo riconoscono.</p> -->
       </div>
     </div>
@@ -2824,6 +2869,29 @@
           el.style.transform = 'none';
         });
       }));
+    })();
+
+    /* ============================================================
+       TURN HERO PARALLAX
+       ============================================================ */
+    (function () {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+      const img = document.querySelector('.c-turn-img');
+      const hero = document.querySelector('.c-turn-hero');
+      if (!img || !hero) return;
+
+      function update() {
+        const rect = hero.getBoundingClientRect();
+        const vh = window.innerHeight;
+        if (rect.bottom < 0 || rect.top > vh) return;
+        const progress = 1 - (rect.bottom / (vh + rect.height));
+        const clamped = Math.max(0, Math.min(1, progress));
+        img.style.transform = 'translateY(' + (clamped * -9) + '%)';
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     })();
 
     /* ============================================================
