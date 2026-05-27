@@ -1131,9 +1131,9 @@
       top: 0;
       left: 0;
       right: 0;
-      height: calc(100vh + 220px);
-      height: calc(100svh + 220px);
-      min-height: 820px;
+      height: calc(100vh + 520px);
+      height: calc(100svh + 520px);
+      min-height: 1100px;
       width: 100%;
       background-image: url('media/A-04_the-turn-hero.jpg');
       background-size: cover;
@@ -1148,9 +1148,9 @@
       inset: 0;
       background: linear-gradient(180deg,
         rgba(26,26,26,.08) 0%,
-        rgba(26,26,26,.36) 42%,
-        rgba(26,26,26,.72) 68%,
-        rgba(26,26,26,1) 84%)
+        rgba(26,26,26,.26) 32%,
+        rgba(26,26,26,.60) 58%,
+        rgba(26,26,26,.90) 100%)
     }
 
     .c-turn-content {
@@ -1217,7 +1217,7 @@
     .c-turn-stats {
       position: relative;
       z-index: 1;
-      background: linear-gradient(180deg, rgba(26,26,26,0) 0px, rgba(26,26,26,1) 220px);
+      background: linear-gradient(180deg, rgba(26,26,26,0) 0px, rgba(26,26,26,1) 500px);
       padding: clamp(64px, 9vw, 112px) 0
     }
 
@@ -1836,6 +1836,10 @@
     }
 
     @media(max-width:720px) {
+      .turn-headline {
+        font-size: clamp(52px, 14vw, 72px)
+      }
+
       .c-story {
         flex: 0 0 82vw
       }
