@@ -1147,10 +1147,10 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg,
-        rgba(26,26,26,.08) 0%,
-        rgba(26,26,26,.26) 32%,
-        rgba(26,26,26,.60) 58%,
-        rgba(26,26,26,.90) 100%)
+          rgba(26, 26, 26, .08) 0%,
+          rgba(26, 26, 26, .26) 32%,
+          rgba(26, 26, 26, .60) 58%,
+          rgba(26, 26, 26, .90) 100%)
     }
 
     .c-turn-content {
@@ -1176,20 +1176,22 @@
     }
 
     .turn-line-1,
-    .turn-line-2 { display: block }
+    .turn-line-2 {
+      display: block
+    }
 
     .turn-line-1 {
       opacity: 0;
       transform: translateY(22px);
-      transition: opacity 0.9s cubic-bezier(.16,1,.3,1) 200ms,
-                  transform 0.9s cubic-bezier(.16,1,.3,1) 200ms
+      transition: opacity 0.9s cubic-bezier(.16, 1, .3, 1) 200ms,
+        transform 0.9s cubic-bezier(.16, 1, .3, 1) 200ms
     }
 
     .turn-line-2 {
       opacity: 0;
       transform: translateY(22px);
-      transition: opacity 1.2s cubic-bezier(.16,1,.3,1) 700ms,
-                  transform 1.2s cubic-bezier(.16,1,.3,1) 700ms
+      transition: opacity 1.2s cubic-bezier(.16, 1, .3, 1) 700ms,
+        transform 1.2s cubic-bezier(.16, 1, .3, 1) 700ms
     }
 
     /* Parent .reveal: annulla opacity/transform del sistema generico,
@@ -1217,7 +1219,7 @@
     .c-turn-stats {
       position: relative;
       z-index: 1;
-      background: linear-gradient(180deg, rgba(26,26,26,0) 0px, rgba(26,26,26,1) 500px);
+      background: linear-gradient(180deg, rgba(26, 26, 26, 0) 0px, rgba(26, 26, 26, 1) 400px);
       padding: clamp(64px, 9vw, 112px) 0
     }
 
