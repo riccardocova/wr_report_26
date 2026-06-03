@@ -95,7 +95,8 @@
       letter-spacing: -0.018em;
       line-height: 1.04;
       font-size: clamp(34px, 5.2vw, 72px);
-      text-wrap: balance
+      text-wrap: balance;
+      margin-bottom: clamp(32px, 4vw, 52px)
     }
 
     .lede {
@@ -1838,6 +1839,11 @@
     }
 
     @media(max-width:720px) {
+      .c-turn-img {
+        background-image: url('media/A-04_the-turn-hero-mobile.jpg');
+        background-position: center center
+      }
+
       .turn-headline {
         font-size: clamp(52px, 14vw, 72px)
       }
@@ -1952,13 +1958,14 @@
         <span class="label">Il contesto</span>
         <span class="rule"></span>
       </div>
-      <h2 class="h-section reveal">Conoscere qualcuno è diventata un'impresa.</h2>
+      <h2 class="h-section reveal"><span style="color:var(--accent)">Conoscere qualcuno</span> è diventata un'impresa.
+      </h2>
 
       <div class="stat-row reveal">
         <div class="stat-num"><span data-count="66">0</span><span class="unit">%</span></div>
         <div class="stat-body">
           <div class="stat-label">dice che conoscere nuove persone è più difficile rispetto al passato</div>
-          <div class="stat-context"><strong>+8 vs 2025</strong></div>
+          <div class="stat-context"><span style="color:var(--accent)">+8 vs 2025</span></div>
         </div>
       </div>
       <div class="stat-row reveal">
@@ -2024,7 +2031,7 @@
         <span class="label">Un fenomeno trasversale</span>
         <span class="rule"></span>
       </div>
-      <h2 class="h-section reveal">La solitudine non dipende da dove vivi.</h2>
+      <h2 class="h-section reveal"><span style="color:var(--accent)">La solitudine</span> non dipende da dove vivi.</h2>
       <p class="lede reveal" style="max-width:720px;color:var(--ink-2);margin-top:24px">
         La solitudine non è un problema di chi vive in posti isolati. L'<button class="fn-ref" data-fn="2"
           type="button">OMS<sup>²</sup></button> nel 2025 le ha dedicato un report intero, definendola una priorità
@@ -2079,7 +2086,7 @@
               </div>
             </div>
           </div>
-          <div class="geo-insight">Il contesto non cambia niente.</div>
+          <!-- <div class="geo-insight">Il contesto non cambia niente.</div> -->
         </div>
 
         <div class="geo-side">
@@ -2162,7 +2169,8 @@
         <span class="label">Nuovi modi per incontrarsi</span>
         <span class="rule"></span>
       </div>
-      <h2 class="h-section reveal">Un tempo c'erano le app. Adesso le persone vogliono incontrarsi nella vita reale.
+      <h2 class="h-section reveal">Un tempo c'erano le app. Adesso le persone vogliono <span
+          style="color:var(--accent)">incontrarsi nella vita reale.</span>
       </h2>
       <p class="lede reveal" style="max-width:740px;color:var(--ink-2);margin-top:24px">
         Dove si conoscono meglio le persone oggi?
@@ -2212,18 +2220,18 @@
           <div class="bar-num"><span data-count="9">0</span>%<span class="bar-delta up">+5 vs 2025</span></div>
         </div>
       </div>
-      <div class="chart-source">Fonte: WeRoad Osservatorio · n=5.012 · ammesse risposte multiple</div>
+      <div class="chart-source">Fonte: WeRoad Osservatorio · Ammesse risposte multiple</div>
 
       <div class="support-stats">
         <div class="support reveal">
           <div class="n"><span data-count="84">0</span>%</div>
-          <div class="l">sente che costruire relazioni che contano è <em>più difficile</em> di prima.</div>
+          <div class="l">sente che costruire relazioni che contano è più difficile di prima.</div>
         </div>
         <div class="support reveal">
           <div class="n"><span data-count="72">0</span>%</div>
-          <div class="l">vuole più esperienze sociali offline. <em
-              style="display:block;margin-top:6px;font-size:12px;font-family:var(--f-mono);letter-spacing:.06em">+0,32
-              vs 2025</em></div>
+          <div class="l">vuole più esperienze sociali offline. <span
+              style="display:block;margin-top:6px;font-size:12px;font-family:var(--f-mono);letter-spacing:.06em;color:var(--accent)">+0,32
+              vs 2025</span></div>
         </div>
       </div>
 
@@ -2272,7 +2280,7 @@
           </div>
           <div class="c-turn-stat reveal">
             <div class="n"><span data-count="52">0</span>%</div>
-            <div class="l">giudica le relazioni nate in viaggio <em>più vere</em> di quelle di tutti i giorni.</div>
+            <div class="l">giudica le relazioni nate in viaggio più vere di quelle di tutti i giorni.</div>
           </div>
         </div>
       </div>
@@ -2327,7 +2335,7 @@
           <div class="bar-num"><span data-count="16">0</span>%</div>
         </div>
       </div>
-      <div class="chart-source">Fonte: WeRoad Osservatorio · n=5.012 · ammesse risposte multiple</div>
+      <div class="chart-source">Fonte: WeRoad Osservatorio · Ammesse risposte multiple</div>
 
       <div class="report-callout reveal" style="margin-top:clamp(40px,5vw,64px)">
         <div class="report-callout__source"><button class="fn-ref" data-fn="5"
@@ -2442,7 +2450,8 @@
       <h2 class="h-section reveal">Storie dalla <em style="font-style:normal;color:var(--accent)">community</em>.</h2>
       <p class="lede reveal" style="max-width:720px;color:var(--ink-2);margin-top:20px">
         Abbiamo chiesto a sei persone della nostra community di raccontare la propria esperienza e come il viaggio ha
-        avuto un impatto sulla loro vita e sulle loro relazioni. Clicca su una card per leggere la storia completa.
+        avuto un impatto sulla loro vita e sulle loro relazioni. <span style="color:var(--accent)">Clicca
+          su una card per leggere la storia completa.</span>
       </p>
     </div>
 
@@ -2706,7 +2715,8 @@
           sociali.</li>
         <li>L'<span class="accent"><span data-count="83">0</span>%</span> dice di sentirsi più aperto verso gli altri
           quando viaggia.</li>
-        <li><strong>Due persone su tre</strong> hanno costruito un legame importante con qualcuno conosciuto durante un
+        <li><span class="accent">Due persone su tre</span> hanno costruito un legame importante con
+          qualcuno conosciuto durante un
           viaggio.</li>
         <li>Per il <span class="accent"><span data-count="60">0</span>%</span> ciò che crea connessione sono soprattutto
           le esperienze vissute insieme, non semplicemente il tempo passato nello stesso posto.</li>
