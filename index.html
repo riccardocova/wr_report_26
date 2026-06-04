@@ -1,140 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="robots" content="noindex,nofollow">
-	<title>Report WeRoad 26 - Preview </title>
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Landing report 2026 — Preview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-		html,
-		body {
-			height: 100%;
-			margin: 0;
-			background-color: #f4f4f4;
-		}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-		body.hiddenindex {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 20px;
-		}
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #111111;
+      padding: clamp(40px, 6vw, 80px) clamp(24px, 8vw, 120px);
+      line-height: 1.6;
+      max-width: 860px;
+    }
 
-		.list {
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			max-width: 680px;
-			background: #ffffff;
-			padding: 40px;
-			border-radius: 16px;
-			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-		}
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: clamp(40px, 5vw, 64px);
+    }
 
-		.list-title {
-			text-align: center;
-			margin-bottom: 40px;
-		}
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: clamp(40px, 5vw, 64px);
+      margin-bottom: 8px;
+    }
 
-		.list-title h1 {
-			color: #000;
-			font-size: 2.5rem;
-			font-family: 'Montserrat', sans-serif;
-			margin: 0;
-		}
+    .version-desc {
+      font-size: 0.95rem;
+      color: #333;
+      margin-bottom: 28px;
+      max-width: 560px;
+    }
 
-		.row {
-			display: flex;
-			flex-direction: row;
-			gap: 16px;
-			justify-content: flex-start;
-			flex-wrap: wrap;
-			padding: 24px 0;
-			border-bottom: 1px solid #cccccc;
-		}
+    .subsection {
+      margin-top: 28px;
+      margin-bottom: 0;
+    }
 
-		.row:last-child {
-			border-bottom: none;
-			padding-bottom: 0;
-		}
+    .subsection-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
 
-		.row:first-of-type {
-			padding-top: 0;
-		}
+    ul {
+      list-style: disc;
+      padding-left: 22px;
+    }
 
-		.btn {
-			display: inline-block;
-			padding: 15px 30px;
-			background-color: #333;
-			color: #fff;
-			text-decoration: none;
-			border-radius: 8px;
-			font-weight: bold;
-			text-align: left;
-			font-family: 'Montserrat', sans-serif;
-			width: 260px;
-			box-sizing: border-box;
-		}
+    li {
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
 
-		.btn-outline {
-			background-color: transparent;
-			border: 2px solid #333;
-			color: #333;
-			padding: 13px 28px;
-		}
+    a {
+      color: #cc2200;
+      text-decoration: underline;
+      font-weight: 600;
+    }
 
-		.dida {
-			display: block;
-			font-weight: normal;
-			font-size: 0.75em;
-			margin-top: 4px;
-		}
-	</style>
+    a:hover { color: #ff3311; }
+
+    .link-muted {
+      color: #111;
+      font-weight: 400;
+    }
+
+    .link-muted a {
+      color: #cc2200;
+      font-weight: 600;
+    }
+
+    .link-muted a:hover { color: #ff3311; }
+
+    .note {
+      font-weight: 400;
+      color: #555;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: clamp(40px, 5vw, 64px) 0;
+    }
+  </style>
 </head>
 
-<body class="hiddenindex">
-	<div class="list">
-		<div class="list-title">
-			<h1>WeRoad report 26 - Preview</h1>
-		</div>
+<body>
 
-		<div class="row">
-			<a href="osservatorio_v-a.html" target="_blank" class="btn">Versione A<span class="dida">Stile
-					visuale</span></a>
-		</div>
+  <h1>Landing report 2026</h1>
 
-		<div class="row">
-			<a href="osservatorio_v-b.html" target="_blank" class="btn">Versione B<span class="dida">Stile
-					tipografico</span></a>
-		</div>
+  <!-- ===== VERSION D ===== -->
+  <h2>Version D</h2>
+  <p class="version-desc">Font WeRoad. Only WeRoad original brand colors (no light gray background, etc.). Only dark background (no light/dark alternate backgrounds).</p>
 
-		<div class="row">
-			<a href="osservatorio_v-c.html" target="_blank" class="btn">Versione C<span class="dida">Merge stile A +
-					B; Light background</span></a>
-			<a href="osservatorio_v-c_fix03.html" target="_blank" class="btn btn-outline">Version C - Var. 03<span
-					class="dida">Font WeRoad; No Light background</span></a>
-		</div>
-		<div class="row">
-			<a href="osservatorio_v-d_fix02.html" target="_blank" class="btn">Versione D<span class="dida">Con testi
-					approvati</span></a>
-			<a href="osservatorio_v-d_fix04.html" target="_blank" class="btn btn-outline">Versione D - Var. 04<span
-					class="dida">Più enfasi su "In viaggio"</span></a>
+  <div class="subsection">
+    <p class="subsection-title">Variant d_04 <span class="note">(final)</span></p>
+    <ul>
+      <li><a href="osservatorio_v-d_fix04.html" target="_blank">IT | Italian</a> <span class="note">(original copy)</span></li>
+      <li><a href="osservatorio_v-d_fix04_en.html" target="_blank">EN | English</a> <span class="note">(copy to be checked)</span></li>
+      <li><a href="osservatorio_v-d_fix04_es.html" target="_blank">ES | Spanish</a> <span class="note">(copy to be checked)</span></li>
+      <li><a href="osservatorio_v-d_fix04_de.html" target="_blank">DE | German</a> <span class="note">(copy to be checked)</span></li>
+      <li><a href="osservatorio_v-d_fix04_fr.html" target="_blank">FR | French</a> <span class="note">(copy to be checked)</span></li>
+    </ul>
+  </div>
 
-			<a href="osservatorio_v-d_fix05.html" target="_blank" class="btn btn-outline">Versione D - Var. 04.1<span
-					class="dida">Hero alternativa 1 per sez. 04</span></a>
-			<a href="osservatorio_v-d_fix06.html" target="_blank" class="btn btn-outline">Versione D - Var. 04.2<span
-					class="dida">Hero alternativa 2 per sez. 04</span></a>
-			<a href="osservatorio_v-d_fix07.html" target="_blank" class="btn btn-outline">Versione D - Var. 04.3<span
-					class="dida">Hero alternativa 3 per sez. 04</span></a>
-			<a href="osservatorio_v-d_fix08.html" target="_blank" class="btn btn-outline">Versione D - Var. 04.4<span
-					class="dida">Hero alternativa 4 per sez. 04</span></a>
-			<a href="osservatorio_v-d_fix09.html" target="_blank" class="btn btn-outline">Versione D - Var. 04.5<span
-					class="dida">Hero alternativa 5 per sez. 04</span></a>
-		</div>
-	</div>
+  <div class="subsection">
+    <p class="subsection-title">Alternative hero images for section 4 <span class="note">"Relazioni in viaggio"</span></p>
+    <ul>
+      <li class="link-muted">Hero img <a href="osservatorio_v-d_fix06.html" target="_blank">alt-1</a></li>
+      <li class="link-muted">Hero img <a href="osservatorio_v-d_fix07.html" target="_blank">alt-2</a></li>
+      <li class="link-muted">Hero img <a href="osservatorio_v-d_fix08.html" target="_blank">alt-3</a></li>
+      <li class="link-muted">Hero img <a href="osservatorio_v-d_fix08.html" target="_blank">alt-4</a></li>
+      <li class="link-muted">Hero img <a href="osservatorio_v-d_fix09.html" target="_blank">alt-5</a></li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <!-- ===== OTHER VERSIONS ===== -->
+  <h2>Other versions rejected</h2>
+  <ul>
+    <li><a href="osservatorio_v-a.html" target="_blank">Version A.1</a> <span class="note">(visual style, cinematographic, videos and pictures)</span></li>
+    <li><a href="osservatorio_v-b.html" target="_blank">Version B.1</a> <span class="note">(typographic style, essential, light/dark background contrast)</span></li>
+    <li><a href="osservatorio_v-c.html" target="_blank">Version C.1</a> <span class="note">(merge of A and B, light/dark background, serif font)</span></li>
+    <li><a href="osservatorio_v-c_fix03.html" target="_blank">Version C.3</a> <span class="note">(merge of A and B, dark background only, WR font only)</span></li>
+  </ul>
+
 </body>
 
 </html>
