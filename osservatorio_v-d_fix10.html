@@ -325,7 +325,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: clamp(80px, 12vw, 140px) var(--gutter) clamp(40px, 6vw, 72px);
+            padding: clamp(80px, 12vw, 140px) var(--gutter) clamp(20px, 6vw, 40px);
             max-width: var(--maxw);
             width: 100%;
             margin: 0 auto
@@ -361,9 +361,9 @@
             font-weight: 600;
             letter-spacing: -0.025em;
             line-height: .98;
-            font-size: clamp(40px, 7vw, 104px);
+            font-size: clamp(32px, 5vw, 76px);
             text-wrap: balance;
-            margin-bottom: clamp(28px, 4vw, 48px)
+            margin-bottom: clamp(18px, 4vw, 36px)
         }
 
         .hero__headline em {
@@ -376,7 +376,7 @@
             font-style: italic;
             font-size: clamp(18px, 1.4vw + 8px, 24px);
             color: var(--on-dark-mute);
-            max-width: 680px;
+            max-width: none;
             line-height: 1.45
         }
 
@@ -387,7 +387,7 @@
             gap: 16px;
             border-top: 1px solid var(--rule-dark);
             padding-top: 20px;
-            margin-top: clamp(48px, 6vw, 80px);
+            margin-top: clamp(28px, 6vw, 40px);
             font-family: var(--f-mono);
             font-size: 11px;
             letter-spacing: .14em;
@@ -1397,7 +1397,7 @@
         .c-story-inner {
             position: relative;
             width: 100%;
-            height: 480px;
+            height: 580px;
             transform-style: preserve-3d;
             transition: transform .65s cubic-bezier(.4, 0, .2, 1)
         }
@@ -1459,10 +1459,7 @@
             font-size: 15px;
             line-height: 1.55;
             color: var(--ink-2);
-            margin-bottom: 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+            margin-bottom: 16px;
             overflow: hidden
         }
 
@@ -1475,6 +1472,7 @@
             padding-left: 12px;
             margin-top: auto;
             margin-bottom: 10px;
+            flex-shrink: 0;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -1899,7 +1897,8 @@
 <body class="grain">
 
     <div class="page-meta" aria-hidden="true">
-        <span>WeRoad — Osservatorio</span>
+        <!-- <span>WeRoad — Osservatorio</span> -->
+        <span>Come stanno cambiando le relazioni oggi?</span>
         <span class="right"><span>Edizione 02</span><span>Maggio 2026</span></span>
     </div>
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -1931,13 +1930,13 @@
             </svg>
         </div>
         <div class="hero__inner">
-            <div class="hero__meta">
+            <!-- <div class="hero__meta">
                 <div class="hero__issue" style="font-size:14px;color:var(--ink)"><span>Come stanno cambiando le
-                        relazioni
-                        oggi?</span></div>
-            </div>
+                        relazioni oggi?</span></div>
+            </div> -->
             <h1 class="hero__headline">
-                Nel 2026 <span style="color:var(--accent)">conoscere persone nuove</span> è diventato più difficile.<br>
+                <div></div>Nel 2026 <span style="color:var(--accent)">conoscere persone nuove</span> è diventato più
+                difficile.<br>
                 <span style="opacity:.55;font-size:.72em">Ma la voglia di incontrarsi non è sparita.</span>
             </h1>
             <p class="hero__sub">
@@ -2051,8 +2050,8 @@
             <div class="geo-grid">
                 <div class="geo-map reveal" id="geoMap">
                     <div class="map-meta">
-                        <span>Per contesto urbano · 2026</span>
-                        <span>5.012 rispondenti</span>
+                        <span>Dove vivono le persone che hanno risposto al nostro sondaggio?</span>
+                        <!-- <span>5.012 rispondenti</span> -->
                     </div>
                     <div class="geo-countries" aria-label="Dati per dimensione del comune">
                         <div class="geo-country">
@@ -2444,14 +2443,9 @@
                 </div>
                 <div>
                     <p class="brand-person-quote__q">Abbiamo sempre pensato di occuparci di viaggi, ma in realtà
-                        rispondiamo a un
-                        bisogno molto più
-                        umano. Il punto non è la destinazione, sono le persone. Quando metti insieme 15 sconosciuti per
-                        dieci
-                        giorni,
-                        lontani dalla propria routine, le barriere si abbassano molto più in fretta di quanto succeda
-                        nella vita
-                        quotidiana.</p>
+                        rispondiamo a un bisogno molto più umano. Quello che conta non è dove vai, ma chi incontri lungo
+                        la strada. Quando metti insieme 15 sconosciuti per dieci giorni, lontani dalla propria routine,
+                        le difese si abbassano molto più in fretta di quanto succeda nella vita quotidiana.</p>
                     <div class="brand-person-quote__attr"><strong>Fabio Bin</strong> — Co-founder &amp; CMO, WeRoad
                     </div>
                 </div>
@@ -2538,7 +2532,7 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_anna-harvey.jpg')">
-                            <div class="c-story-photo-name">Anna Harvey 🇬🇧</div>
+                            <div class="c-story-photo-name">Anna Harvey</div>
                         </div>
                         <p class="c-story-bio">Anna ha 31 anni, è inglese, lavora come copywriter e si definisce
                             fortemente
@@ -2552,7 +2546,7 @@
                     </div>
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
-                        <div class="c-story-back-name">Anna Harvey 🇬🇧</div>
+                        <div class="c-story-back-name">Anna Harvey</div>
                         <div class="c-story-quote-full">
                             "In generale non mi piacciono molto le persone. Quando la mia batteria sociale si scarica,
                             tendo a
@@ -2580,12 +2574,11 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_alicia-bailac.jpg')">
-                            <div class="c-story-photo-name">Alicia Bailac 🇪🇸</div>
+                            <div class="c-story-photo-name">Alicia Bailac</div>
                         </div>
                         <p class="c-story-bio">Alicia ha 39 anni, è spagnola, lavora come assistente di direzione ed è
                             coordinatrice. Curiosa per natura ma frenata dalle paure, dopo essere stata ghostata prima
-                            di un viaggio
-                            ha deciso di partire lo stesso.</p>
+                            di un viaggio ha deciso di partire lo stesso.</p>
                         <p class="c-story-excerpt">Mi ha ghostato prima del viaggio. Ho prenotato lo stesso, da sola, in
                             Giordania —
                             e ho trovato persone che mi hanno spinta oltre ogni limite che pensavo di avere.</p>
@@ -2593,7 +2586,7 @@
                     </div>
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
-                        <div class="c-story-back-name">Alicia Bailac 🇪🇸</div>
+                        <div class="c-story-back-name">Alicia Bailac</div>
                         <div class="c-story-quote-full">
                             "Dovevo partire con il mio ex. Mi ha ghostato. Non avevo nessuno con cui andare, ma ho
                             deciso che non
@@ -2625,7 +2618,7 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_manuel-ortega-sanchez.jpg')">
-                            <div class="c-story-photo-name">Manuel Ortega Sánchez 🇪🇸</div>
+                            <div class="c-story-photo-name">Manuel Ortega Sánchez</div>
                         </div>
                         <p class="c-story-bio">Manuel ha 35 anni, è di Siviglia, lavora come ingegnere aeronautico ed è
                             coordinatore. Ha fatto il suo primo viaggio di gruppo dopo la pandemia e ha trovato anche la
@@ -2638,7 +2631,7 @@
                     </div>
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
-                        <div class="c-story-back-name">Manuel Ortega Sánchez 🇪🇸</div>
+                        <div class="c-story-back-name">Manuel Ortega Sánchez</div>
                         <div class="c-story-quote-full">
                             "Dopo il Covid nessuno dei miei amici voleva viaggiare. Così ho prenotato un viaggio in
                             Messico senza
@@ -2670,7 +2663,7 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_simon-serp.jpg')">
-                            <div class="c-story-photo-name">Simon Serp 🇫🇷</div>
+                            <div class="c-story-photo-name">Simon Serp</div>
                         </div>
                         <p class="c-story-bio">Simon ha 28 anni, è francese, lavorava come fisioterapista in Svizzera.
                             Guadagnava
@@ -2684,7 +2677,7 @@
                     </div>
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
-                        <div class="c-story-back-name">Simon Serp 🇫🇷</div>
+                        <div class="c-story-back-name">Simon Serp</div>
                         <div class="c-story-quote-full">
                             "Avevo un lavoro ben pagato, di quelli che dall'esterno sembrano perfetti. Ma non ero
                             soddisfatto. Sentivo
@@ -2716,7 +2709,7 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_eileen-wegner.jpg')">
-                            <div class="c-story-photo-name">Eileen Wegner 🇩🇪</div>
+                            <div class="c-story-photo-name">Eileen Wegner</div>
                         </div>
                         <p class="c-story-bio">Eileen ha 36 anni, vive a Berlino, lavora come podcaster e video editor,
                             e cresce suo
@@ -2730,7 +2723,7 @@
                     </div>
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
-                        <div class="c-story-back-name">Eileen Wegner 🇩🇪</div>
+                        <div class="c-story-back-name">Eileen Wegner</div>
                         <div class="c-story-quote-full">
                             "Per anni le uniche avventure che conoscevo erano su uno schermo. Esploravo le piramidi con
                             Lara Croft,
@@ -2768,7 +2761,7 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_daniela-d-attolico.jpg')">
-                            <div class="c-story-photo-name">Daniela D'Attolico 🇮🇹</div>
+                            <div class="c-story-photo-name">Daniela D'Attolico</div>
                         </div>
                         <p class="c-story-bio">Daniela ha 30 anni, lavora per un'azienda di mobilità a Bolzano, è
                             abituata a turni
@@ -2783,7 +2776,7 @@
                     </div>
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
-                        <div class="c-story-back-name">Daniela D'Attolico 🇮🇹</div>
+                        <div class="c-story-back-name">Daniela D'Attolico</div>
                         <div class="c-story-quote-full">
                             "I miei turni rendono quasi impossibile incastrare i tempi con gli amici. Sapevo dei viaggi
                             di gruppo da
@@ -2893,9 +2886,8 @@
             </p>
 
             <div class="conc-sub-head reveal">
-                Leggi e scarica il report completo in PDF dal <a
-                    href="https://www.weroad.it/blog/ricerca-solitudine-generazione-z" target="_blank"
-                    rel="noopener">blog di WeRoad</a>.
+                Leggi la <a href="https://www.weroad.it/blog/ricerca-solitudine-generazione-z" target="_blank"
+                    rel="noopener">metodologia completa</a>.
             </div>
 
             <div class="colophon">
@@ -2909,12 +2901,13 @@
                                 points="87.98 51.77 87.98 45.43 102.54 45.43 102.54 31.78 87.98 31.78 87.98 25.69 109.92 25.69 109.92 11.3 74.52 11.3 70.46 11.3 55.93 11.3 49.6 30.46 43.26 11.3 31.26 11.3 24.92 30.46 16.77 5.77 5.62 0.15 0 11.3 18.09 66.16 31.75 66.16 37.26 49.55 42.77 66.16 56.42 66.16 70.46 23.61 70.46 66.16 110.49 66.16 110.49 51.77 87.98 51.77" />
                         </svg>
                     </div>
-                    <div class="wordmark__sub">Osservatorio · Edizione 02 · 2026</div>
+                    <div class="wordmark__sub">Come stanno cambiando le relazioni oggi?</div>
                 </div>
                 <div class="colophon-meta reveal">
-                    <div>Stampa &amp; richieste media</div>
-                    <div><a href="mailto:press@weroad.it">press@weroad.it</a></div>
-                    <div style="opacity:.5;margin-top:18px">Ricerca: 5.000 risp. · IT, ES, FR, DE, UK · Q1 2026</div>
+                    <div>Per info e richieste di approfondimento: <a href="mailto:press@weroad.com">press@weroad.com</a>
+                    </div>
+                    <!-- <div><a href="mailto:press@weroad.com">press@weroad.com</a></div> -->
+                    <!-- <div style="opacity:.5;margin-top:18px">Ricerca: 5.000 risp. · IT, ES, FR, DE, UK · Q1 2026</div> -->
                 </div>
             </div>
         </div>
