@@ -1369,7 +1369,8 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             padding: clamp(32px, 4vw, 56px) 0 clamp(40px, 5vw, 64px);
-            scrollbar-width: none
+            scrollbar-width: none;
+            touch-action: none
         }
 
         .c-stories-track::-webkit-scrollbar {
@@ -1923,7 +1924,7 @@
 
     <div class="page-meta" aria-hidden="true">
         <!-- <span>WeRoad — Osservatorio</span> -->
-        <span>Come stanno cambiando le relazioni oggi? _12.4</span>
+        <span>Come stanno cambiando le relazioni oggi? _12.5</span>
         <span class="right"><span>Edizione 02</span><span>Maggio 2026</span></span>
     </div>
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -3283,40 +3284,72 @@
         })();
 
         /* ============================================================
-           SLIDER DIRECTIONAL SCROLL — intercept on the track itself
-           with {passive:false} so we decide direction before iOS commits.
-           Vertical → prevent + window.scrollBy. Horizontal → let browser handle.
+           SLIDER DIRECTIONAL SCROLL
+           touch-action:none on the track hands full control to JS —
+           the browser never commits to a scroll direction, so both
+           image and text areas respond identically.
+           H-drag → scroll track manually + snap on release.
+           V-drag → window.scrollBy.
            ============================================================ */
         (function () {
             const track = document.getElementById('cStoriesTrack');
             if (!track) return;
 
-            let startX = 0, startY = 0, lastY = 0, dir = null;
+            let startX = 0, startY = 0, lastX = 0, lastY = 0;
+            let dir = null, snapCard = 0;
+
+            function snapTo(index) {
+                const cards = track.querySelectorAll('.c-story');
+                index = Math.max(0, Math.min(cards.length - 1, index));
+                const targetLeft = cards[index].offsetLeft;
+                track.style.scrollSnapType = '';
+                track.scrollTo({ left: targetLeft, behavior: 'smooth' });
+            }
 
             track.addEventListener('touchstart', function (e) {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-                lastY = startY;
+                startX = lastX = e.touches[0].clientX;
+                startY = lastY = e.touches[0].clientY;
                 dir = null;
+                const cw = (track.querySelector('.c-story') || {}).offsetWidth || 320;
+                snapCard = Math.round(track.scrollLeft / cw);
+                track.style.scrollSnapType = 'none'; // disable CSS snap during drag
             }, { passive: true });
 
             track.addEventListener('touchmove', function (e) {
-                const dx = Math.abs(e.touches[0].clientX - startX);
-                const dy = Math.abs(e.touches[0].clientY - startY);
+                e.preventDefault(); // safe: touch-action:none in CSS means browser won't scroll
 
-                if (!dir && (dx > 3 || dy > 3)) {
-                    /* Require vertical to be clearly dominant before locking */
+                const cx = e.touches[0].clientX;
+                const cy = e.touches[0].clientY;
+                const dx = Math.abs(cx - startX);
+                const dy = Math.abs(cy - startY);
+
+                if (!dir && (dx > 4 || dy > 4)) {
                     dir = dy > dx * 0.8 ? 'v' : 'h';
                 }
 
                 if (dir === 'v') {
-                    e.preventDefault(); /* stop iOS from committing to h-scroll */
-                    window.scrollBy(0, lastY - e.touches[0].clientY);
-                    lastY = e.touches[0].clientY;
+                    window.scrollBy(0, lastY - cy);
+                } else if (dir === 'h') {
+                    track.scrollLeft += lastX - cx;
                 }
+
+                lastX = cx;
+                lastY = cy;
             }, { passive: false });
 
-            track.addEventListener('touchend', function () { dir = null; }, { passive: true });
+            track.addEventListener('touchend', function () {
+                if (dir === 'h') {
+                    const cw = (track.querySelector('.c-story') || {}).offsetWidth || 320;
+                    const dragDelta = startX - lastX; // positive = swipe left = next card
+                    let target = snapCard;
+                    if (dragDelta > cw * 0.15) target = snapCard + 1;
+                    else if (dragDelta < -cw * 0.15) target = snapCard - 1;
+                    snapTo(target);
+                } else {
+                    track.style.scrollSnapType = ''; // restore if no h-drag
+                }
+                dir = null;
+            }, { passive: true });
         })();
     </script>
 </body>
