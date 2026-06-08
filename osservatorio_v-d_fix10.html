@@ -1383,7 +1383,6 @@
             scroll-snap-align: start;
             padding: 0 clamp(10px, 1.4vw, 20px);
             perspective: 1000px;
-            -webkit-perspective: 1000px;
             cursor: pointer
         }
 
@@ -1434,16 +1433,15 @@
             background-position: center top;
             flex-shrink: 0;
             margin: -28px -24px 14px;
-            position: relative;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden
+            position: relative
         }
 
-        .c-story-photo::after {
+        /* ::before so the name (real child, painted after) is naturally on top — no z-index needed */
+        .c-story-photo::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(26, 26, 26, .05) 20%, rgba(26, 26, 26, .75) 100%)
+            background: linear-gradient(180deg, rgba(26, 26, 26, .05) 20%, rgba(26, 26, 26, .82) 100%)
         }
 
         .c-story-photo-name {
@@ -1452,15 +1450,12 @@
             left: 0;
             right: 0;
             padding: 32px 14px 10px;
-            z-index: 1;
             font-family: var(--f-display);
             font-weight: 700;
             font-size: clamp(17px, 1.6vw, 21px);
             letter-spacing: -0.015em;
             color: var(--ink);
-            line-height: 1.2;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden
+            line-height: 1.2
         }
 
         .c-story-bio {
@@ -2543,8 +2538,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_anna-harvey.jpg')">
-                            <div class="c-story-photo-name">Anna Harvey</div>
-                        </div>
+                                <div class="c-story-photo-name">Anna Harvey</div>
+                            </div>
                         <p class="c-story-bio">Anna_ ha 31 anni, è inglese, lavora come copywriter e si definisce
                             fortemente
                             introversa. Non ha mai amato particolarmente stare in mezzo alla gente. Nonostante questo,
@@ -2585,8 +2580,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_alicia-bailac.jpg')">
-                            <div class="c-story-photo-name">Alicia Bailac</div>
-                        </div>
+                                <div class="c-story-photo-name">Alicia Bailac</div>
+                            </div>
                         <p class="c-story-bio">Alicia ha 39 anni, è spagnola, lavora come assistente di direzione ed è
                             coordinatrice. Curiosa per natura ma frenata dalle paure, dopo essere stata ghostata prima
                             di un viaggio ha deciso di partire lo stesso.</p>
@@ -2629,8 +2624,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_manuel-ortega-sanchez.jpg')">
-                            <div class="c-story-photo-name">Manuel Ortega Sánchez</div>
-                        </div>
+                                <div class="c-story-photo-name">Manuel Ortega Sánchez</div>
+                            </div>
                         <p class="c-story-bio">Manuel ha 35 anni, è di Siviglia, lavora come ingegnere aeronautico ed è
                             coordinatore. Ha fatto il suo primo viaggio di gruppo dopo la pandemia e ha trovato anche la
                             sua compagna,
@@ -2674,8 +2669,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_simon-serp.jpg')">
-                            <div class="c-story-photo-name">Simon Serp</div>
-                        </div>
+                                <div class="c-story-photo-name">Simon Serp</div>
+                            </div>
                         <p class="c-story-bio">Simon ha 28 anni, è francese, lavorava come fisioterapista in Svizzera.
                             Guadagnava
                             bene, la vita sembrava perfetta vista da fuori. Ma non lo era. Ha lasciato tutto per
@@ -2720,8 +2715,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_eileen-wegner.jpg')">
-                            <div class="c-story-photo-name">Eileen Wegner</div>
-                        </div>
+                                <div class="c-story-photo-name">Eileen Wegner</div>
+                            </div>
                         <p class="c-story-bio">Eileen ha 36 anni, vive a Berlino, lavora come podcaster e video editor,
                             e cresce suo
                             figlio da sola. Per anni le sue uniche avventure erano quelle dei videogiochi. Poi ha
@@ -2772,8 +2767,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_daniela-d-attolico.jpg')">
-                            <div class="c-story-photo-name">Daniela D'Attolico</div>
-                        </div>
+                                <div class="c-story-photo-name">Daniela D'Attolico</div>
+                            </div>
                         <p class="c-story-bio">Daniela ha 30 anni, lavora per un'azienda di mobilità a Bolzano, è
                             abituata a turni
                             imprevedibili e ha passato anni a rimandare prima di fare il grande passo — dopo che la sua
