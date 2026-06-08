@@ -1420,6 +1420,16 @@
             overflow: hidden
         }
 
+        /* clip-path instead of overflow:hidden on the FRONT face only.
+           clip-path clips visually the same way but does NOT create a scroll
+           container in iOS Safari — so touch events from the text area bubble
+           directly to .c-stories-track and vertical page scroll works correctly.
+           .c-story-back keeps overflow:hidden for the scrollable quote inside. */
+        .c-story-front {
+            overflow: visible;
+            clip-path: inset(0)
+        }
+
         .c-story-back {
             transform: rotateY(180deg);
             -webkit-transform: rotateY(180deg)
@@ -1458,15 +1468,12 @@
         }
 
         /* Wrapper for front card text — NOT a scroll container (no overflow).
-           user-select:none prevents iOS from entering text-selection mode on swipe,
-           which was blocking vertical page scroll from the text area. */
+           Touch events target this div, walk up to .c-story-front for touch-action. */
         .c-story-text-area {
             flex: 1;
             display: flex;
             flex-direction: column;
-            min-height: 0;
-            user-select: none;
-            -webkit-user-select: none
+            min-height: 0
         }
 
         /* clip-path clips visually like overflow:hidden but does NOT create a scroll

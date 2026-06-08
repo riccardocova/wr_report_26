@@ -2,35 +2,40 @@
 
 **File di partenza:** `osservatorio_v-d_fix13.html` (= commit `fdd0646`, "fix12.3 swipe e scroll")
 
-**Stato fix13:** swipe V funziona dall'area immagine, non funziona dall'area testo del front della card.
+**Diagnosi finale:**
+Analizzando lo slider di weroad.it (section `TRIP_LIST_PROMO`) — che funziona correttamente — la differenza strutturale con il nostro slider è che le loro card non hanno `overflow: hidden` su elementi intermedi. La struttura è solo:
+```
+overflow-x:auto (scroll container)
+  └── card (no overflow)
+      └── contenuto (immagine + testo)
+```
 
-**Problema delle versioni precedenti (fix12.4–fix12.5 e primo tentativo fix14):**
-I fix basati su JS con `e.preventDefault()` anticipato (prima che la direzione fosse determinata) rompevano il V-scroll nativo dall'immagine e il V-scroll interno della quote sul retro. Il V-scroll dall'immagine funzionava SENZA JS — bloccarlo con `preventDefault` precoce ne causava la regressione.
+Nel nostro slider invece `.c-story-front` ha `overflow: hidden`, che iOS Safari tratta come uno scroll container intermedio. Questo cambia come iOS gestisce il touch gesture sul testo: invece di far risalire il V-scroll fino alla pagina (scroll chaining), lo "cattura" nel contesto di `.c-story-front` e non lo propaga correttamente.
 
-**Diagnosi:**
-- Immagine: `div` con background-image → iOS non entra in "text-selection mode" → scroll chaining nativo al window ✓
-- Testo: `<p>` con contenuto testuale → iOS entra in "text-selection mode" su swipe → intercetta il gesture prima del scroll chaining → V non arriva al window ✗
+**Modifica applicata — CSS only, una sola proprietà:**
 
-**Modifica applicata — CSS only, nessun JS:**
+Separato `.c-story-front` da `.c-story-back` nella regola CSS e aggiunto override:
 
 ```css
-.c-story-text-area {
-    user-select: none;
-    -webkit-user-select: none
+.c-story-front {
+    overflow: visible;
+    clip-path: inset(0)
 }
 ```
 
-Impedisce a iOS di entrare in text-selection mode quando il tocco inizia sui `<p>` dell'area testo. Se questo è sufficiente, il browser eseguirà scroll chaining V→window esattamente come fa per l'immagine, senza bisogno di alcun handler JS.
+- `overflow: visible` — rimuove `.c-story-front` dagli scroll container di iOS
+- `clip-path: inset(0)` — clip visuale identica a `overflow: hidden` (taglia il contenuto ai bordi del box), ma **non crea un scroll container** nel modello di iOS Safari
 
-**Nessun handler JS aggiunto** — la base fix12.3 non aveva JS per il touch, e questa modifica non ne aggiunge. Questo preserva:
-- Il V-scroll nativo dall'immagine (invariato)
-- Il V-scroll interno di `.c-story-quote-full` sul retro (invariato)
+`.c-story-back` mantiene `overflow: hidden` perché contiene `.c-story-quote-full` con `overflow-y: auto` (scroll della citazione completa).
+
+**Nessun JS aggiunto.** Nessun `touch-action`. Nessun `user-select`. Solo questa modifica CSS strutturale.
 
 **Cosa testare su device:**
 - [ ] Swipe verticale dalla parte TESTO del front → deve scrollare la pagina
 - [ ] Swipe orizzontale dalla parte TESTO del front → deve scorrere le card
-- [ ] Swipe verticale dalla parte IMMAGINE → non deve regredir
-- [ ] Swipe orizzontale dalla parte IMMAGINE → non deve regredir
-- [ ] Scroll della quote completa sul retro → deve funzionare (overflow-y interno)
-- [ ] Tap su card → flip funziona
+- [ ] Swipe verticale dalla parte IMMAGINE → non deve regredir (deve scrollare pagina)
+- [ ] Swipe orizzontale dalla parte IMMAGINE → non deve regredir (deve scorrere card)
+- [ ] Scroll della quote completa sul retro → deve funzionare
+- [ ] Tap su card → flip animazione funziona (verificare che clip-path non rompa la 3D rotation)
 - [ ] Pulsanti prev/next → funzionano
+- [ ] Progress bar → si aggiorna
