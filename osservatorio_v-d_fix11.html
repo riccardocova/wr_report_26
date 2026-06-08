@@ -1924,7 +1924,7 @@
 
     <div class="page-meta" aria-hidden="true">
         <!-- <span>WeRoad — Osservatorio</span> -->
-        <span>Come stanno cambiando le relazioni oggi? _</span>
+        <span>Come stanno cambiando le relazioni oggi?</span>
         <span class="right"><span>Edizione 02</span><span>Maggio 2026</span></span>
     </div>
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -3251,6 +3251,44 @@
                     e.stopPropagation();
                     open(parseInt(btn.dataset.fn));
                 });
+            });
+        })();
+
+        /* ============================================================
+           FRONT CARD TEXT — VERTICAL SCROLL FIX
+           CSS touch-action cannot propagate through -webkit-box /
+           overflow:hidden elements on iOS Safari. This handler detects
+           the swipe direction and manually scrolls the page for
+           vertical gestures starting on the text area of the front card.
+           ============================================================ */
+        (function () {
+            let startX = 0, startY = 0, dir = null;
+
+            document.querySelectorAll('.c-story-front').forEach(function (front) {
+                front.addEventListener('touchstart', function (e) {
+                    if (e.target.closest('.c-story-photo')) return;
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                    dir = null;
+                }, { passive: true });
+
+                front.addEventListener('touchmove', function (e) {
+                    if (e.target.closest('.c-story-photo')) return;
+                    const dx = Math.abs(e.touches[0].clientX - startX);
+                    const dy = Math.abs(e.touches[0].clientY - startY);
+                    if (!dir && (dx > 4 || dy > 4)) {
+                        dir = dx > dy ? 'h' : 'v';
+                    }
+                    if (dir === 'v') {
+                        e.preventDefault();
+                        window.scrollBy(0, startY - e.touches[0].clientY);
+                        startY = e.touches[0].clientY;
+                    }
+                }, { passive: false });
+
+                front.addEventListener('touchend', function () {
+                    dir = null;
+                }, { passive: true });
             });
         })();
     </script>
