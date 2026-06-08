@@ -1420,6 +1420,11 @@
             overflow: hidden
         }
 
+        /* pan-x: horizontal swipe passes to slider, vertical swipe passes to page */
+        .c-story-front {
+            touch-action: pan-x
+        }
+
         .c-story-back {
             transform: rotateY(180deg);
             -webkit-transform: rotateY(180deg)
@@ -2060,8 +2065,8 @@
             <h2 class="h-section reveal"><span style="color:var(--accent)">La solitudine</span> non dipende da dove
                 vivi.</h2>
             <p class="lede reveal" style="max-width:720px;color:var(--ink-2);margin-top:24px">
-                La solitudine non è un problema di chi vive in posti isolati. L'<button class="fn-ref" data-fn="2"
-                    type="button">OMS<sup>²</sup></button> nel 2025 le ha dedicato un report intero, definendola una
+                La solitudine non è un problema di chi vive in posti isolati. <button class="fn-ref" data-fn="2"
+                    type="button">L'OMS<sup>²</sup></button> nel 2025 le ha dedicato un report intero, definendola una
                 priorità
                 globale di salute pubblica.
             </p>
@@ -2069,7 +2074,7 @@
             <div class="geo-grid">
                 <div class="geo-map reveal" id="geoMap">
                     <div class="map-meta">
-                        <span>Dove vivono le persone che hanno risposto al nostro sondaggio?</span>
+                        <span>Chi si sente solo, dove vive?</span>
                         <!-- <span>5.012 rispondenti</span> -->
                     </div>
                     <div class="geo-countries" aria-label="Dati per dimensione del comune">
@@ -2220,7 +2225,7 @@
                     style="color:var(--accent)">incontrarsi nella vita reale.</span>
             </h2>
             <p class="lede reveal" style="max-width:740px;color:var(--ink-2);margin-top:24px">
-                Dove si conoscono meglio le persone oggi?
+                Dove preferiscono incontrarsi le persone oggi?
             </p>
 
             <div class="chart" id="chart" role="figure" aria-label="Dove si conoscono le persone, 2026">
