@@ -1434,7 +1434,9 @@
             background-position: center top;
             flex-shrink: 0;
             margin: -28px -24px 14px;
-            position: relative
+            position: relative;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden
         }
 
         .c-story-photo::after {
@@ -1456,7 +1458,9 @@
             font-size: clamp(17px, 1.6vw, 21px);
             letter-spacing: -0.015em;
             color: var(--ink);
-            line-height: 1.2
+            line-height: 1.2;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden
         }
 
         .c-story-bio {
