@@ -1397,7 +1397,7 @@
         .c-story-inner {
             position: relative;
             width: 100%;
-            height: 580px;
+            height: 500px;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
             transition: transform .65s cubic-bezier(.4, 0, .2, 1)
@@ -1462,7 +1462,11 @@
             font-size: 15px;
             line-height: 1.55;
             color: var(--ink-2);
-            margin-bottom: 16px;
+            margin-bottom: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
             overflow: hidden
         }
 
@@ -1525,8 +1529,18 @@
             letter-spacing: .16em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             padding-right: 40px
+        }
+
+        .c-story-back-bio {
+            font-size: 13px;
+            line-height: 1.55;
+            color: var(--ink-3);
+            flex-shrink: 0;
+            margin: 0 0 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, .1)
         }
 
         .c-story-quote-full {
@@ -1854,7 +1868,7 @@
             }
 
             .c-story-inner {
-                height: 640px
+                height: 500px
             }
 
             .c-story-quote-full {
@@ -2538,9 +2552,9 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_anna-harvey.jpg')">
-                                <div class="c-story-photo-name">Anna Harvey</div>
-                            </div>
-                        <p class="c-story-bio">Anna_ ha 31 anni, è inglese, lavora come copywriter e si definisce
+                            <div class="c-story-photo-name">Anna Harvey</div>
+                        </div>
+                        <p class="c-story-bio">Anna ha 31 anni, è inglese, lavora come copywriter e si definisce
                             fortemente
                             introversa. Non ha mai amato particolarmente stare in mezzo alla gente. Nonostante questo,
                             ha deciso di
@@ -2553,6 +2567,9 @@
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
                         <div class="c-story-back-name">Anna Harvey</div>
+                        <p class="c-story-back-bio">Anna ha 31 anni, è inglese, lavora come copywriter e si definisce
+                            fortemente introversa. Non ha mai amato particolarmente stare in mezzo alla gente.
+                            Nonostante questo, ha deciso di mettersi alla prova con un viaggio di gruppo in Nepal.</p>
                         <div class="c-story-quote-full">
                             "In generale non mi piacciono molto le persone. Quando la mia batteria sociale si scarica,
                             tendo a
@@ -2580,8 +2597,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_alicia-bailac.jpg')">
-                                <div class="c-story-photo-name">Alicia Bailac</div>
-                            </div>
+                            <div class="c-story-photo-name">Alicia Bailac</div>
+                        </div>
                         <p class="c-story-bio">Alicia ha 39 anni, è spagnola, lavora come assistente di direzione ed è
                             coordinatrice. Curiosa per natura ma frenata dalle paure, dopo essere stata ghostata prima
                             di un viaggio ha deciso di partire lo stesso.</p>
@@ -2593,6 +2610,9 @@
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
                         <div class="c-story-back-name">Alicia Bailac</div>
+                        <p class="c-story-back-bio">Alicia ha 39 anni, è spagnola, lavora come assistente di direzione
+                            ed è coordinatrice. Curiosa per natura ma frenata dalle paure, dopo essere stata ghostata
+                            prima di un viaggio ha deciso di partire lo stesso.</p>
                         <div class="c-story-quote-full">
                             "Dovevo partire con il mio ex. Mi ha ghostato. Non avevo nessuno con cui andare, ma ho
                             deciso che non
@@ -2624,8 +2644,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_manuel-ortega-sanchez.jpg')">
-                                <div class="c-story-photo-name">Manuel Ortega Sánchez</div>
-                            </div>
+                            <div class="c-story-photo-name">Manuel Ortega Sánchez</div>
+                        </div>
                         <p class="c-story-bio">Manuel ha 35 anni, è di Siviglia, lavora come ingegnere aeronautico ed è
                             coordinatore. Ha fatto il suo primo viaggio di gruppo dopo la pandemia e ha trovato anche la
                             sua compagna,
@@ -2638,6 +2658,9 @@
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
                         <div class="c-story-back-name">Manuel Ortega Sánchez</div>
+                        <p class="c-story-back-bio">Manuel ha 35 anni, è di Siviglia, lavora come ingegnere aeronautico
+                            ed è coordinatore. Ha fatto il suo primo viaggio di gruppo dopo la pandemia e ha trovato
+                            anche la sua compagna, con cui si sposerà l'anno prossimo.</p>
                         <div class="c-story-quote-full">
                             "Dopo il Covid nessuno dei miei amici voleva viaggiare. Così ho prenotato un viaggio in
                             Messico senza
@@ -2669,8 +2692,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_simon-serp.jpg')">
-                                <div class="c-story-photo-name">Simon Serp</div>
-                            </div>
+                            <div class="c-story-photo-name">Simon Serp</div>
+                        </div>
                         <p class="c-story-bio">Simon ha 28 anni, è francese, lavorava come fisioterapista in Svizzera.
                             Guadagnava
                             bene, la vita sembrava perfetta vista da fuori. Ma non lo era. Ha lasciato tutto per
@@ -2684,6 +2707,9 @@
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
                         <div class="c-story-back-name">Simon Serp</div>
+                        <p class="c-story-back-bio">Simon ha 28 anni, è francese, lavorava come fisioterapista in
+                            Svizzera. Guadagnava bene, la vita sembrava perfetta vista da fuori. Ma non lo era. Ha
+                            lasciato tutto per viaggiare ed è diventato coordinatore.</p>
                         <div class="c-story-quote-full">
                             "Avevo un lavoro ben pagato, di quelli che dall'esterno sembrano perfetti. Ma non ero
                             soddisfatto. Sentivo
@@ -2715,8 +2741,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_eileen-wegner.jpg')">
-                                <div class="c-story-photo-name">Eileen Wegner</div>
-                            </div>
+                            <div class="c-story-photo-name">Eileen Wegner</div>
+                        </div>
                         <p class="c-story-bio">Eileen ha 36 anni, vive a Berlino, lavora come podcaster e video editor,
                             e cresce suo
                             figlio da sola. Per anni le sue uniche avventure erano quelle dei videogiochi. Poi ha
@@ -2730,6 +2756,9 @@
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
                         <div class="c-story-back-name">Eileen Wegner</div>
+                        <p class="c-story-back-bio">Eileen ha 36 anni, vive a Berlino, lavora come podcaster e video
+                            editor, e cresce suo figlio da sola. Per anni le sue uniche avventure erano quelle dei
+                            videogiochi. Poi ha scoperto i viaggi di gruppo.</p>
                         <div class="c-story-quote-full">
                             "Per anni le uniche avventure che conoscevo erano su uno schermo. Esploravo le piramidi con
                             Lara Croft,
@@ -2767,8 +2796,8 @@
                     <div class="c-story-front">
                         <div class="c-story-photo"
                             style="background-image:url('media/quote-testimonial_daniela-d-attolico.jpg')">
-                                <div class="c-story-photo-name">Daniela D'Attolico</div>
-                            </div>
+                            <div class="c-story-photo-name">Daniela D'Attolico</div>
+                        </div>
                         <p class="c-story-bio">Daniela ha 30 anni, lavora per un'azienda di mobilità a Bolzano, è
                             abituata a turni
                             imprevedibili e ha passato anni a rimandare prima di fare il grande passo — dopo che la sua
@@ -2783,6 +2812,9 @@
                     <div class="c-story-back">
                         <button class="c-story-close" aria-label="Chiudi">×</button>
                         <div class="c-story-back-name">Daniela D'Attolico</div>
+                        <p class="c-story-back-bio">Daniela ha 30 anni, lavora per un'azienda di mobilità a Bolzano, è
+                            abituata a turni imprevedibili e ha passato anni a rimandare prima di fare il grande passo —
+                            dopo che la sua psicologa l'ha incoraggiata a provare.</p>
                         <div class="c-story-quote-full">
                             "I miei turni rendono quasi impossibile incastrare i tempi con gli amici. Sapevo dei viaggi
                             di gruppo da
