@@ -1417,9 +1417,7 @@
             padding: 28px 24px 20px;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
-            user-select: none;
-            -webkit-user-select: none
+            overflow: hidden
         }
 
         .c-story-back {
@@ -1460,12 +1458,15 @@
         }
 
         /* Wrapper for front card text — NOT a scroll container (no overflow).
-           Touch events target this div, walk up to .c-story-front for touch-action. */
+           user-select:none prevents iOS from entering text-selection mode on swipe,
+           which was blocking vertical page scroll from the text area. */
         .c-story-text-area {
             flex: 1;
             display: flex;
             flex-direction: column;
-            min-height: 0
+            min-height: 0;
+            user-select: none;
+            -webkit-user-select: none
         }
 
         /* clip-path clips visually like overflow:hidden but does NOT create a scroll
@@ -3282,57 +3283,6 @@
                     open(parseInt(btn.dataset.fn));
                 });
             });
-        })();
-
-        /* ============================================================
-           SLIDER DIRECTIONAL SCROLL
-           Problem: iOS Safari commits to pan-x for touches starting on
-           <p> text inside an overflow-x:auto container. The text-selection
-           gesture pre-empts the scroll gesture, so vertical swipes from
-           the card text area don't scroll the page.
-
-           Two-part fix:
-           1. CSS user-select:none on .c-story-front prevents iOS from
-              entering text-selection mode on the text area entirely.
-           2. e.preventDefault() fires even while direction is still
-              undetermined (first few touchmove events), so the browser
-              cannot pre-commit to pan-x in that early window.
-              Once direction locks to 'h', we stop preventing and the
-              browser handles horizontal scroll natively.
-           ============================================================ */
-        (function () {
-            const track = document.getElementById('cStoriesTrack');
-            if (!track) return;
-
-            let startX = 0, startY = 0, lastY = 0, dir = null;
-
-            track.addEventListener('touchstart', function (e) {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-                lastY = startY;
-                dir = null;
-            }, { passive: true });
-
-            track.addEventListener('touchmove', function (e) {
-                const dx = Math.abs(e.touches[0].clientX - startX);
-                const dy = Math.abs(e.touches[0].clientY - startY);
-
-                if (!dir && (dx > 3 || dy > 3)) {
-                    dir = dy > dx * 0.8 ? 'v' : 'h';
-                }
-
-                if (dir === 'v') {
-                    e.preventDefault();
-                    window.scrollBy(0, lastY - e.touches[0].clientY);
-                    lastY = e.touches[0].clientY;
-                } else if (!dir) {
-                    /* direction undetermined: block browser pre-commit to pan-x */
-                    e.preventDefault();
-                }
-                /* dir === 'h': let browser handle horizontal scroll natively */
-            }, { passive: false });
-
-            track.addEventListener('touchend', function () { dir = null; }, { passive: true });
         })();
 
     </script>
