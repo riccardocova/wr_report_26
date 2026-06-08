@@ -1923,7 +1923,7 @@
 
     <div class="page-meta" aria-hidden="true">
         <!-- <span>WeRoad — Osservatorio</span> -->
-        <span>Come stanno cambiando le relazioni oggi? _12.4</span>
+        <span>Come stanno cambiando le relazioni oggi? _12.3</span>
         <span class="right"><span>Edizione 02</span><span>Maggio 2026</span></span>
     </div>
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -3282,42 +3282,6 @@
             });
         })();
 
-        /* ============================================================
-           SLIDER DIRECTIONAL SCROLL — intercept on the track itself
-           with {passive:false} so we decide direction before iOS commits.
-           Vertical → prevent + window.scrollBy. Horizontal → let browser handle.
-           ============================================================ */
-        (function () {
-            const track = document.getElementById('cStoriesTrack');
-            if (!track) return;
-
-            let startX = 0, startY = 0, lastY = 0, dir = null;
-
-            track.addEventListener('touchstart', function (e) {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-                lastY = startY;
-                dir = null;
-            }, { passive: true });
-
-            track.addEventListener('touchmove', function (e) {
-                const dx = Math.abs(e.touches[0].clientX - startX);
-                const dy = Math.abs(e.touches[0].clientY - startY);
-
-                if (!dir && (dx > 3 || dy > 3)) {
-                    /* Require vertical to be clearly dominant before locking */
-                    dir = dy > dx * 0.8 ? 'v' : 'h';
-                }
-
-                if (dir === 'v') {
-                    e.preventDefault(); /* stop iOS from committing to h-scroll */
-                    window.scrollBy(0, lastY - e.touches[0].clientY);
-                    lastY = e.touches[0].clientY;
-                }
-            }, { passive: false });
-
-            track.addEventListener('touchend', function () { dir = null; }, { passive: true });
-        })();
     </script>
 </body>
 
