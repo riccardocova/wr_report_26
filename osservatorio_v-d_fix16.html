@@ -1476,6 +1476,12 @@
             z-index: 1
         }
 
+        /* Hide the overlay when the card is flipped — prevents the ::after
+           from intercepting touches on the back face in iOS 3D rendering. */
+        .c-story-inner.flipped .c-story-text-area::after {
+            display: none
+        }
+
         /* clip-path clips visually like overflow:hidden but does NOT create a scroll
            container — iOS Safari will not intercept vertical swipes here */
         .c-story-bio {
@@ -1561,6 +1567,7 @@
         .c-story-quote-full {
             flex: 1;
             overflow-y: auto;
+            overscroll-behavior: contain;
             font-family: var(--f-body);
             font-style: italic;
             font-size: 14px;
@@ -1933,7 +1940,7 @@
 
     <div class="page-meta" aria-hidden="true">
         <!-- <span>WeRoad — Osservatorio</span> -->
-        <span>Come stanno cambiando le relazioni oggi? _16</span>
+        <span>Come stanno cambiando le relazioni oggi? _16.1</span>
         <span class="right"><span>Edizione 02</span><span>Maggio 2026</span></span>
     </div>
     <div class="scroll-progress" id="scrollProgress"></div>
