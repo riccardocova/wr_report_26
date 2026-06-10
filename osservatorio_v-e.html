@@ -29,7 +29,7 @@
   --rule-dark: rgba(245,242,237,.18);
   --rule-light: rgba(26,26,26,.16);
 
-  --f-display: "Syne", "Inter", system-ui, sans-serif;
+  --f-display: "Fraunces", Georgia, serif;
   --f-body: "Source Serif 4", "Source Serif Pro", Georgia, serif;
   --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
@@ -92,8 +92,9 @@ a { color: inherit; }
   font-weight: 600;
   letter-spacing: -0.018em;
   line-height: 1.04;
-  font-size: clamp(28px, 4vw, 58px);
+  font-size: clamp(32px, 4.8vw, 68px);
   text-wrap: balance;
+  margin-bottom: clamp(28px, 3.5vw, 48px);
 }
 .lede {
   font-family: var(--f-body);
@@ -266,7 +267,7 @@ html[data-paper="false"] .section--light.paper-tex {
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 0.98;
-  font-size: clamp(28px, 3.5vw, 56px);
+  font-size: clamp(38px, 6vw, 88px);
   text-wrap: balance;
   margin-bottom: clamp(28px, 4vw, 48px);
 }
@@ -1632,7 +1633,7 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
   font-family: var(--f-body);
   font-size: clamp(19px, 1.2vw + 10px, 26px);
   line-height: 1.45;
-  color: var(--on-dark-mute);
+  color: var(--on-dark);
   max-width: 760px;
   margin-bottom: clamp(40px, 6vw, 64px);
   text-wrap: pretty;
@@ -1658,7 +1659,7 @@ html[data-sxsw="alt"] .s-sxsw .sxsw-quote .q { color: var(--on-dark); }
 .conc-stats li {
   font-size: clamp(16px, .6vw + 13px, 19px);
   line-height: 1.55;
-  color: var(--on-dark-mute);
+  color: var(--on-dark);
   border-left: 1px solid var(--rule-dark);
   padding-left: clamp(16px, 2vw, 24px);
 }
