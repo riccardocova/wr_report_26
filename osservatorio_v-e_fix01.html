@@ -105,7 +105,7 @@
     /* Type roles */
     .kicker {
       font-family: var(--f-mono);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 500;
       letter-spacing: .14em;
       text-transform: uppercase;
@@ -113,7 +113,7 @@
 
     .eyebrow {
       font-family: var(--f-mono);
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--on-light-mute);
@@ -194,7 +194,7 @@
     }
 
     .chapter .label {
-      opacity: .6;
+      opacity: .85;
     }
 
     .chapter .rule {
@@ -315,11 +315,11 @@
       font-size: 11px;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--on-dark-mute);
       pointer-events: none;
-      transition: color .4s ease;
-      mix-blend-mode: difference;
       color: #b9b6b1;
+      background: rgba(0, 0, 0, .2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .page-meta .right {
@@ -418,10 +418,10 @@
     .hero__sub {
       font-family: var(--f-body);
       font-style: italic;
-      font-size: clamp(18px, 1.4vw + 8px, 24px);
+      font-size: clamp(20px, 1.6vw + 10px, 28px);
       color: var(--on-dark-mute);
-      max-width: 680px;
       line-height: 1.45;
+      margin-bottom: clamp(24px, 3vw, 40px);
     }
 
     .hero__bottom {
@@ -631,7 +631,7 @@
     .pullquote .attr {
       margin-top: 18px;
       font-family: var(--f-mono);
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--on-light-mute);
@@ -787,7 +787,7 @@
     .geo-insight {
       margin-top: clamp(20px, 2.5vw, 28px);
       font-family: var(--f-mono);
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--on-light-mute);
@@ -839,7 +839,7 @@
 
     .who-stats .who-lbl {
       font-family: var(--f-mono);
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--on-light-mute);
@@ -926,7 +926,7 @@
     .bar-delta {
       display: block;
       font-family: var(--f-mono);
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--on-light-mute);
       letter-spacing: .04em;
@@ -941,7 +941,7 @@
     .chart-source {
       margin-top: 18px;
       font-family: var(--f-mono);
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--on-light-mute);
@@ -1291,7 +1291,7 @@
 
     .sxsw-meta {
       font-family: var(--f-mono);
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--on-light-mute);
@@ -1350,7 +1350,7 @@
 
     .sxsw-quote .attr {
       font-family: var(--f-mono);
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--on-light-mute);
@@ -1366,8 +1366,9 @@
 
     .conc-eyebrow {
       font-family: var(--f-mono);
-      font-size: 12px;
-      letter-spacing: .16em;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--on-dark-mute);
       margin-bottom: 24px;
@@ -1642,7 +1643,6 @@
     .c-turn-stats {
       background: var(--paper);
       padding: clamp(64px, 9vw, 112px) 0;
-      border-top: 3px solid var(--accent);
     }
 
     .c-turn-stats__grid {
@@ -1988,8 +1988,11 @@
       line-height: 1.55;
       color: var(--ink-2);
       margin-bottom: 0;
-      max-height: 72px;
-      clip-path: inset(0);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .c-story-excerpt {
@@ -2002,8 +2005,11 @@
       margin-top: 22px;
       margin-bottom: 10px;
       flex-shrink: 0;
-      max-height: 64px;
-      clip-path: inset(0);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .c-story-readmore {
@@ -2189,7 +2195,7 @@
 
     .report-callout__source {
       font-family: var(--f-mono);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: .16em;
       text-transform: uppercase;
@@ -2830,7 +2836,7 @@
         <div class="support reveal">
           <div class="n"><span data-count="72">0</span>%</div>
           <div class="l">vuole più esperienze sociali offline. <span
-              style="display:block;margin-top:6px;font-size:12px;font-family:var(--f-mono);letter-spacing:.06em;color:var(--accent)">+0,32
+              style="display:block;margin-top:6px;font-size:13px;font-family:var(--f-mono);letter-spacing:.06em;color:var(--accent)">+0,32
               vs 2025</span></div>
         </div>
       </div>
@@ -3013,13 +3019,13 @@
         <span class="label">Ricerca qualitativa — SXSW</span>
         <span class="rule"></span>
       </div>
-      <div class="sxsw-meta reveal">Austin, Texas · SXSW · Marzo 2026</div>
       <h2 class="sxsw-headline reveal">Che ne pensa un gruppo di <em>americani?</em></h2>
       <p class="lede reveal body" style="max-width:720px;margin-top:24px;color:var(--ink-2)">
         Durante il SXSW 2026 ad Austin abbiamo condotto un focus group con 15 americani tra i 20 e i 30 anni. Non una
         ricerca scientifica, ma una conversazione aperta con persone di background diversi per capire se quello che i
         numeri europei ci stavano raccontando avesse riscontro anche dall'altra parte dell'oceano.
       </p>
+      <div class="sxsw-meta reveal" style="margin-top: 2rem;">Austin, Texas · SXSW · Marzo 2026</div>
       <div class="sxsw-quotes">
         <figure class="sxsw-quote reveal">
           <p class="q">È facile collezionare amici lungo la strada, ma crescendo preferisci incontrare persone con cui
